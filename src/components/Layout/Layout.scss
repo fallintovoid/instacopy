@@ -1,0 +1,23 @@
+@import '../../styles/variables.scss';
+
+main {
+    background-color: $bg-color;
+    display: flex;
+    justify-content: center;
+    font-family: $font-main;
+
+    div {
+        background-color: $bg-color;
+        width: 50%;
+        height: 100%;
+        padding-top: 10px;
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    main {
+        div {
+            width: 100%;
+        }
+    }
+}
