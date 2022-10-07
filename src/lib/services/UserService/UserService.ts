@@ -1,3 +1,5 @@
+import { UserServiceResponse } from "./UserService.interface"
+
 export class UserService {
     async fetchUsers(amountOfUsers: number): Promise<UserServiceResponse[]> {
         try {

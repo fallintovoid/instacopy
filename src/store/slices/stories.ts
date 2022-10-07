@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
-import { UserService } from '../../lib/services/UserService';
+import { UserService } from '../../lib/services/UserService/UserService';
 
 interface StoriesState {
   stories: Story[] | null;
