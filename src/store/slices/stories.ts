@@ -1,31 +1,23 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
+import { UserService } from '../../lib/services/UserService';
 
 interface StoriesState {
-  users: User[] | null;
+  stories: Story[] | null;
   status: 'idle' | 'error' | 'ok'
 }
 
+const userService = new UserService()
+
 export const fetchAvi = createAsyncThunk(
-    'stories/fetchAvis',
-    async (): Promise<string> => {
-        try {
-            const response = await fetch('https://i.pravatar.cc/150')
-            const data = response.json()
-            console.log(data)
-            if (response.status < 200 || response.status >= 300) {
-                throw new Error('Api thrown an error. Response status: ' + response.status)
-            }
-            
-            return data
-        } catch (error) {
-            throw new Error('Something went wrong: ' + error)
-        }
+    'stories/fetchAvi',
+    async (amount: number): Promise<Story[]> => {
+        return await userService.getInfoForStories(amount)
     }
 )
 
 const initialState = { 
-    users: [],
+    stories: [],
     status: 'idle'
 } as StoriesState
 
@@ -41,9 +33,11 @@ const storiesSlice = createSlice({
         .addCase(fetchAvi.rejected, (state) => {
             state.status = 'error'
         })
-        .addCase(fetchAvi.fulfilled, (state, action: PayloadAction<string>) => {
-            state.status = 'idle'
-            state.users?.push({avi: action.payload})
+        .addCase(fetchAvi.fulfilled, (state, action: PayloadAction<Story[]>) => {
+            state.status = 'ok'
+            action.payload.forEach((item: Story): void => {
+                state.stories?.push({avi: item.avi, username: item.username})
+            })
         })
   },
 })

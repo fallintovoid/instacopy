@@ -1,8 +1,35 @@
+@import '../../styles/variables.scss';
+
 .story {
-    width: 150px;
-    height: 150px;
-    overflow: hidden;
-    border-radius: 50%;
-    border: purple;
-    background-color: aqua;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: $main-color;
+    gap: 5px;
+
+    .photo {
+        max-width: 70px;
+        min-width: 70px;
+        max-height: 70px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        overflow: hidden;
+        border-radius: 50%;
+        border: rgb(251, 0, 201) 4px solid;
+        background-color: aqua;
+        cursor: pointer;
+    
+        img {
+            width: 85px;
+            height: 85px;
+        }
+    }
+
+
+    p {
+        font-size: 0.7rem;
+    }
 }
