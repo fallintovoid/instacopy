@@ -1,5 +1,3 @@
-import React from 'react'
-import { useAppSelector } from '../../hooks/hooks';
 import './Story.scss'
 
 type Props = {

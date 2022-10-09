@@ -1,18 +1,14 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
-import { UserService } from '../../lib/services/UserService/UserService';
+import { UserService } from '../../../lib/services/UserService/UserService';
+import { StoriesState } from './stories.interface';
 
-interface StoriesState {
-  stories: Story[] | null;
-  status: 'idle' | 'error' | 'ok'
-}
-
-const userService = new UserService()
+const userService = new UserService(5)
 
 export const fetchAvi = createAsyncThunk(
     'stories/fetchAvi',
-    async (amount: number): Promise<Story[]> => {
-        return await userService.getInfoForStories(amount)
+    async (): Promise<User[]> => {
+        return await userService.getInfoForStories()
     }
 )
 
@@ -33,11 +29,9 @@ const storiesSlice = createSlice({
         .addCase(fetchAvi.rejected, (state) => {
             state.status = 'error'
         })
-        .addCase(fetchAvi.fulfilled, (state, action: PayloadAction<Story[]>) => {
+        .addCase(fetchAvi.fulfilled, (state, action: PayloadAction<User[]>) => {
             state.status = 'ok'
-            action.payload.forEach((item: Story): void => {
-                state.stories?.push({avi: item.avi, username: item.username})
-            })
+            state.stories = action.payload
         })
   },
 })

@@ -6,6 +6,7 @@ import { ReactComponent as Messages } from '../../images/messages.svg';
 import { ReactComponent as Add } from '../../images/add.svg';
 import { ReactComponent as Search } from '../../images/search.svg';
 import { ReactComponent as Likes } from '../../images/likes.svg';
+import { Link } from 'react-router-dom';
 
 type Props = {}
 
@@ -20,11 +21,22 @@ const Header = (props: Props) => {
                 <input className='searchbar_input' placeholder='Search'/>
             </div>
             <div className='menu'>
-                <Home className='icon'/>
-                <Messages className='icon'/>
-                <Add className='icon'/>
-                <Search className='icon'/>
-                <Likes className='icon'/>
+                <Link to='/'>
+                     <Home className='icon'/>
+                </Link>
+                <Link to='/'>
+                    <Messages className='icon'/>
+                </Link>
+                <Link to='/add'>
+                    <Add className='icon'/>
+                </Link>
+                <Link to='/'>
+                    <Search className='icon'/>
+                </Link>
+                <Link to='/'>
+                    <Likes className='icon'/>
+                </Link>
+                
             </div>
         </div>
     </div>

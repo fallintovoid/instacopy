@@ -50,3 +50,19 @@ export interface UserServiceResponse {
         date: string;
     }
 }
+
+export interface UnsplashResponse {
+    alt_description: string;
+    blur_hash: string;
+    color: string;
+    description: string;
+    likes: number;
+    urls: {
+        full: string;
+        raw: string;
+        regular: string;
+        small: string;
+        small_s3: string;
+        thumb: string;
+    }
+}

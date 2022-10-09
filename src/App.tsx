@@ -1,21 +1,35 @@
 import React from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.scss';
 import Layout from './components/Layout/Layout';
-import PostList from './components/PostList/PostList';
-import Profile from './components/Profile/Profile';
-import Stories from './components/Stories/Stories';
+import Addpage from './routes/Addpage/Addpage';
+import Homepage from './routes/Homepage/Homepage';
+import { useEffect } from 'react'
+import { fetchAvi } from './store/slices/stories/stories'
+import { useAppDispatch, useAppSelector } from './lib/hooks/hooks'
+import { getPosts } from './store/slices/posts/posts';
 
 function App() {
+  const dispatch = useAppDispatch()
+  const users = useAppSelector(state => state.stories.stories)
+
+  useEffect((): void => {
+    dispatch(fetchAvi())
+  }, [])
+
+  useEffect(() => {
+    dispatch(getPosts(users!))
+  }, [users])
+
   return (
-    <Layout>
-      <div className="main">
-        <Stories/>
-        <PostList/>
-      </div>
-      <div className='profile'>
-        <Profile/>
-      </div>
-    </Layout>
+    <BrowserRouter>
+      <Layout>
+        <Routes>
+          <Route path='/' element={<Homepage/>}/>
+          <Route path='add' element={<Addpage/>}/>
+        </Routes>
+      </Layout>
+    </BrowserRouter>
   );
 }
 
