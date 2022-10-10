@@ -1,4 +1,4 @@
-export interface UserServiceResponse {
+export interface PeopleApiResponse {
     cell: string;
     dob: {
         date: string;
@@ -57,6 +57,7 @@ export interface UnsplashResponse {
     color: string;
     description: string;
     likes: number;
+    id: string;
     urls: {
         full: string;
         raw: string;

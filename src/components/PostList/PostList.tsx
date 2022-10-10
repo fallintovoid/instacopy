@@ -1,7 +1,8 @@
 import React from 'react'
 import { useAppSelector } from '../../lib/hooks/hooks'
 import Post from '../Post/Post'
-import './PostList.scss'
+import s from './PostList.module.scss'
+
 
 type Props = {}
 
@@ -10,12 +11,19 @@ const PostList = (props: Props) => {
 
   const renderPostList = (posts: Post[]) => {
     return posts.map((post: Post) => {
-      return <Post avi={post.avi} username={post.username} img={post.img} likes={post.likes}/>
+      return <Post 
+        avi={post.avi} 
+        username={post.username} 
+        img={post.img} 
+        likes={post.likes}
+        description={post.description}
+        key={post.img}
+        id={post.id}/>
     })
   }
 
   return (
-    <div className='postlist'>
+    <div className={s.postlist}>
       {renderPostList(posts)}
     </div>
   )

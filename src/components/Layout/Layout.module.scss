@@ -18,8 +18,15 @@ main {
 @media only screen and (max-width: 1000px) {
     main {
         div {
+            width: 80%;
+        }
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    main {
+        div {
             width: 100%;
-            padding: 2px;
         }
     }
 }

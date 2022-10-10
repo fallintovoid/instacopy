@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react'
-import './Stories.scss'
+import React from 'react'
+import s from './Stories.module.scss'
 import { useAppSelector } from '../../lib/hooks/hooks'
 import Story from '../Story/Story'
 
@@ -24,7 +24,7 @@ const Stories = (props: Props) => {
     : null
 
   return (
-    <div className={`stories ${status === 'idle' ? 'loading' : null}`}>
+    <div className={`${s.stories} ${status === 'idle' ? 'loading' : null}`}>
       {storiesComponent}
     </div>
   )

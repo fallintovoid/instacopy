@@ -1,5 +1,5 @@
 import React from 'react'
-import './Header.scss'
+import s from './Header.module.scss'
 import { ReactComponent as Logo } from '../../images/logo.svg';
 import { ReactComponent as Home } from '../../images/home.svg';
 import { ReactComponent as Messages } from '../../images/messages.svg';
@@ -12,29 +12,29 @@ type Props = {}
 
 const Header = (props: Props) => {
   return (
-    <div className='header'>
-        <div className='wrapper'>
-            <div className='logo'>
+    <div className={s.header}>
+        <div className={s.wrapper}>
+            <div className={s.logo}>
                 <Logo/>
             </div>
-            <div className='searchbar'>
-                <input className='searchbar_input' placeholder='Search'/>
+            <div className={s.searchbar}>
+                <input className={s.searchbar_input} placeholder='Search'/>
             </div>
-            <div className='menu'>
+            <div className={s.menu}>
                 <Link to='/'>
-                     <Home className='icon'/>
+                     <Home className={s.icon}/>
                 </Link>
                 <Link to='/'>
-                    <Messages className='icon'/>
+                    <Messages className={s.icon}/>
                 </Link>
                 <Link to='/add'>
-                    <Add className='icon'/>
+                    <Add className={s.icon}/>
                 </Link>
                 <Link to='/'>
-                    <Search className='icon'/>
+                    <Search className={s.icon}/>
                 </Link>
                 <Link to='/'>
-                    <Likes className='icon'/>
+                    <Likes className={s.icon}/>
                 </Link>
                 
             </div>

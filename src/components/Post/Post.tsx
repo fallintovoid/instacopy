@@ -1,15 +1,9 @@
 import React, { useState } from 'react'
-import './Post.scss'
-import { ReactComponent as Like } from '../../images/like.svg';
+import s from './Post.module.scss'
+import { AiOutlineHeart } from 'react-icons/ai'
+import { AiFillHeart } from 'react-icons/ai'
 
-type Props = {
-    username: string,
-    avi: string,
-    img: string,
-    likes: number
-}
-
-const Post = ({username, avi, img, likes}: Props) => {
+const Post = ({username, avi, img, likes, description}: Post) => {
 
     const [likeAmount, setLikeAmount] = useState(likes)
     const [clickAmount, setClickAmount] = useState(0)
@@ -24,24 +18,34 @@ const Post = ({username, avi, img, likes}: Props) => {
         }
     }
 
+    const likeButton = clickAmount 
+        ? <AiFillHeart 
+            onClick={onLikeHandler}
+            className={s.likebutton}
+            size='40'/>
+
+        : <AiOutlineHeart 
+            onClick={onLikeHandler}
+            className={s.likebutton}
+            size='40'/>
+
     return (
-        <div className='post'>
-            <div className='post--user'>
-                <div className='post--user--avi'>
+        <div className={s.post}>
+            <div className={s.post_user}>
+                <div className={s.post_user_avi}>
                     <img src={avi} alt={avi}/>
                 </div>
                 <p>{username}</p>
             </div>
-            <div className='post--image'>
+            <div className={s.post_image}>
                 <img src={img} alt={img}/>
             </div>
-            <div className='post--info'>
-                <div className='post--info--menu'>
-                    <Like 
-                        onClick={onLikeHandler}
-                        className='likebutton'/>
+            <div className={s.post_info}>
+                <div className={s.post_info_menu}>
+                    {likeButton}
                 </div>
                 <p>{likeAmount} Likes</p>
+                <p>{description ? description : null}</p>
             </div>
         </div>
   )

@@ -1,4 +1,4 @@
-import './Story.scss'
+import s from './Story.module.scss'
 
 type Props = {
     avi: string | null;
@@ -10,8 +10,8 @@ const Story = ({avi, username}: Props) => {
         ? <img src={avi} alt={avi}/>
         : null
     return (
-        <div className='story'>
-            <div className='photo'>
+        <div className={s.story}>
+            <div className={s.photo}>
                 {completeAvi}
             </div>
             <p>{username}</p>

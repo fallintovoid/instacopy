@@ -16,4 +16,6 @@ interface Post {
     avi: string;
     username: string;
     likes: number;
+    description: string;
+    id: string;
 }

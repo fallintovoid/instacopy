@@ -6,12 +6,17 @@
 
 .profile {
     width: 40%;
+    padding-left: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 @media only screen and (max-width: 1000px) {
-    .main {
-        width: 100%;
-    }
     .profile {
         display: none;
+    }
+
+    .main {
+        width: 100%;
     }
 }
