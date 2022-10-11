@@ -8,6 +8,7 @@ import { useEffect } from 'react'
 import { fetchAvi } from './store/slices/stories/stories'
 import { useAppDispatch, useAppSelector } from './lib/hooks/hooks'
 import { getPosts } from './store/slices/posts/posts';
+import Profile from './routes/Profile/Profile';
 
 function App() {
   const dispatch = useAppDispatch()
@@ -27,6 +28,7 @@ function App() {
         <Routes>
           <Route path='/' element={<Homepage/>}/>
           <Route path='add' element={<Addpage/>}/>
+          <Route path='profile' element={<Profile/>}/>
         </Routes>
       </Layout>
     </BrowserRouter>

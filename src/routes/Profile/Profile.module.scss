@@ -1,0 +1,99 @@
+@import '../../styles/variables';
+
+.profile {
+    width: 100%;
+    background-color: $bg-color;
+    height: fit-content;
+
+    &_avi {
+        width: 40%;
+        padding: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &_wrapper {
+            width: 170px;
+            height: 170px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+
+            img {
+                width: 115%;
+                height: 115%;
+            }
+        }
+    }
+
+
+    &_info {
+        width: 60%;
+        height: 200px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        &_username {
+            font-size: 30px;
+        }
+
+        &_statistic {
+            width: 100%;
+            display: flex;
+            justify-content: flex-start;
+            gap: 15px;
+
+            p {
+                display: flex;
+                gap: 5px;
+
+                .number {
+                    font-weight: 600;
+                }
+            }
+        }
+
+        &_description {
+            font-weight: 600;
+            font-size: 18px;
+        }
+    }
+}
+
+
+@media only screen and (max-width: 600px) {
+    .profile {
+        &_avi {
+            &_wrapper {
+                width: 100px;
+                height: 100px;
+
+                img {
+                    width: 120%;
+                    height: 120%;
+                }
+            }
+        }
+
+        &_info {
+            height: fit-content;
+
+            &_username {
+                font-size: 20px;
+            }
+
+            &_statistic {
+                p {
+                    font-size: 12px;
+                }
+            }   
+            
+            &_description {
+                font-size: 14px;
+            }
+        }
+    }
+}

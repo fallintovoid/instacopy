@@ -12,6 +12,11 @@
     padding: 0;
     border: $border;
 
+    a {
+        text-decoration: none;
+        color: black
+    }
+
     &_photo {
         max-width: 80px;
         max-height: 80px;

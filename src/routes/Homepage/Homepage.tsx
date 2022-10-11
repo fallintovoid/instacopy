@@ -8,9 +8,6 @@ import './Homepage.scss'
 type Props = {}
 
 const Homepage = (props: Props) => {
-    
-
-
     return (
         <>
             <div className="main">

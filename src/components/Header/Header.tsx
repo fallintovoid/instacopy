@@ -15,7 +15,9 @@ const Header = (props: Props) => {
     <div className={s.header}>
         <div className={s.wrapper}>
             <div className={s.logo}>
-                <Logo/>
+                <Link to='/'>
+                    <Logo/>
+                </Link>
             </div>
             <div className={s.searchbar}>
                 <input className={s.searchbar_input} placeholder='Search'/>
