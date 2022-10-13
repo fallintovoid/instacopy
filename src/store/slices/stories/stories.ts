@@ -13,10 +13,10 @@ export const fetchAvi = createAsyncThunk(
     }
 )
 
-const initialState = { 
+const initialState: StoriesState = { 
     stories: [],
     status: 'idle'
-} as StoriesState
+}
 
 const storiesSlice = createSlice({
   name: 'stories',

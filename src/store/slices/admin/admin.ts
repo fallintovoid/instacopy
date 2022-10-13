@@ -1,9 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { AdminState } from "./admin.interface";
 
-export const initialState = {
+export const initialState: AdminState = {
     amountOfUsersForRequest: 5
-} as AdminState
+}
 
 const adminSlice = createSlice({
     name: 'admin',

@@ -1,0 +1,19 @@
+.profilepost {
+    width: 32%;
+    height: 300px;
+    background-color: aqua;
+    padding: 0;
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .profilepost {
+        width: 100%;
+        height: 400px;
+    }
+}

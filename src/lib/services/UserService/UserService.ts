@@ -31,22 +31,40 @@ export class UserService {
         })
     }
     async getPosts(users: User[]): Promise<Post[]> {
-        const photos = await fetch(`https://api.unsplash.com/photos?client_id=tpPYTFIEZp2r7wB5MhBnvrjHU3qhQtpu8rpXrEm9D2I`)
+        const photos = await fetch(`https://api.unsplash.com/photos?client_id=tpPYTFIEZp2r7wB5MhBnvrjHU3qhQtpu8rpXrEm9D2I&per_page=${this.amountOfUsers}`)
         const dataPhotos = await photos.json() as UnsplashResponse[]
-        const filteredPhotos = dataPhotos.filter((item: UnsplashResponse, i: number) => i < this.amountOfUsers)
-        console.log(filteredPhotos)
 
         const comparedPosts = users.map((item: User, i: number) => {
             return {
-                img: filteredPhotos[i].urls.regular,
-                likes: filteredPhotos[i].likes,
+                img: dataPhotos[i].urls.regular,
+                likes: dataPhotos[i].likes,
                 avi: item.avi.medium,
                 username: item.username,
-                description: filteredPhotos[i].description,
-                id: filteredPhotos[i].id
+                description: dataPhotos[i].description,
+                id: dataPhotos[i].id
             } as Post
         })
         return comparedPosts
+    }
+
+    async getPostsForProfile(username: string, avi: string): Promise<Post[]> {
+        const photos = await fetch(`https://api.unsplash.com/photos?client_id=tpPYTFIEZp2r7wB5MhBnvrjHU3qhQtpu8rpXrEm9D2I&per_page=${this.amountOfUsers}&order_by=popular`)
+        const dataPhotos = await photos.json() as UnsplashResponse[]
+
+        const posts = dataPhotos.map((item: UnsplashResponse) => {
+            const post: Post = {
+                avi,
+                img: item.urls.full,
+                username,
+                likes: item.likes,
+                description: item.description,
+                id: item.id
+            }
+
+            return post
+        })
+
+        return posts
     }
 
 }

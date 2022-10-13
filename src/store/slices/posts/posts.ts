@@ -5,10 +5,10 @@ import { initialState as _adminState } from "../admin/admin";
 
 const userService = new UserService(_adminState.amountOfUsersForRequest);
 
-const initialState = {
+const initialState: PostsState = {
     status: 'idle',
     posts: []
-} as PostsState
+}
 
 export const getPosts = createAsyncThunk(
     'posts/getPosts',

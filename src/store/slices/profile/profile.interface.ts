@@ -5,4 +5,10 @@ export interface ProfileState {
     subscribed: number;
     profileAvi: string;
     posts: Post[];
+    status: 'idle' | 'error' | 'ok'
+}
+
+export interface GetPostsPayload {
+    username: string;
+    avi: string;
 }
