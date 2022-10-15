@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { UserService } from "../../../lib/services/UserService/UserService";
-import { PostsState } from "./posts.interface";
+import { PostsState, SetClickAmountPayload, SetLikesPayload } from "./posts.interface";
 import { initialState as _adminState } from "../admin/admin";
 
 const userService = new UserService(_adminState.amountOfUsersForRequest);
@@ -20,7 +20,14 @@ export const getPosts = createAsyncThunk(
 const postsSlice = createSlice({
     name: 'posts',
     initialState,
-    reducers: {},
+    reducers: {
+        setLikes: (state, action: PayloadAction<SetLikesPayload>) => {
+            state.posts.find((item: Post) => item.id === action.payload.id)!.likes += action.payload.amountOfLikes
+        },
+        setClickAmount: (state, action: PayloadAction<SetClickAmountPayload>) => {
+            state.posts.find((item: Post) => item.id === action.payload.id)!.clickAmount = action.payload.clickAmount
+        }
+    },
     extraReducers(builder) {
         builder
             .addCase(getPosts.pending, (state: PostsState) => {
@@ -36,4 +43,8 @@ const postsSlice = createSlice({
     },
 })
 
+export const {
+    setLikes,
+    setClickAmount
+} = postsSlice.actions 
 export default postsSlice.reducer

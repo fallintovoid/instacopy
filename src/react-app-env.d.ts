@@ -18,4 +18,5 @@ interface Post {
     likes: number;
     description: string;
     id: string;
+    clickAmount: number;
 }

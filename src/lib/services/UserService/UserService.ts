@@ -35,14 +35,17 @@ export class UserService {
         const dataPhotos = await photos.json() as UnsplashResponse[]
 
         const comparedPosts = users.map((item: User, i: number) => {
-            return {
+            const post: Post = {
                 img: dataPhotos[i].urls.regular,
                 likes: dataPhotos[i].likes,
                 avi: item.avi.medium,
                 username: item.username,
                 description: dataPhotos[i].description,
-                id: dataPhotos[i].id
-            } as Post
+                id: dataPhotos[i].id,
+                clickAmount: 0
+            }
+
+            return post
         })
         return comparedPosts
     }
@@ -58,7 +61,8 @@ export class UserService {
                 username,
                 likes: item.likes,
                 description: item.description,
-                id: item.id
+                id: item.id,
+                clickAmount: 0
             }
 
             return post

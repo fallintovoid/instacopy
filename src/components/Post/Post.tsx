@@ -2,30 +2,42 @@ import React, { useState } from 'react'
 import s from './Post.module.scss'
 import { AiOutlineHeart } from 'react-icons/ai'
 import { AiFillHeart } from 'react-icons/ai'
+import { setLikes, setClickAmount } from '../../store/slices/posts/posts'
+import { useAppDispatch } from '../../lib/hooks/hooks'
 
-const Post = ({username, avi, img, likes, description}: Post) => {
+const Post = ({username, avi, img, likes, description, id, clickAmount}: Post) => {
+    const dispatch = useAppDispatch()
 
-    const [likeAmount, setLikeAmount] = useState(likes)
-    const [clickAmount, setClickAmount] = useState(0)
-
-    const onLikeHandler = () => {
+    const onLikeHandler = (id: string) => {
         if (clickAmount === 0) {
-            setLikeAmount(prev => prev + 1)
-            setClickAmount(1)
+            dispatch(setLikes({
+                id,
+                amountOfLikes: 1
+            }))
+            dispatch(setClickAmount({
+                id,
+                clickAmount: 1
+            }))
         } else {
-            setLikeAmount(prev => prev - 1)
-            setClickAmount(0)
+            dispatch(setLikes({
+                id,
+                amountOfLikes: -1
+            }))
+            dispatch(setClickAmount({
+                id,
+                clickAmount: 0
+            }))
         }
     }
 
     const likeButton = clickAmount 
         ? <AiFillHeart 
-            onClick={onLikeHandler}
+            onClick={() => onLikeHandler(id)}
             className={s.likebutton}
             size='40'/>
 
         : <AiOutlineHeart 
-            onClick={onLikeHandler}
+            onClick={() => onLikeHandler(id)}
             className={s.likebutton}
             size='40'/>
 
@@ -44,7 +56,7 @@ const Post = ({username, avi, img, likes, description}: Post) => {
                 <div className={s.post_info_menu}>
                     {likeButton}
                 </div>
-                <p>{likeAmount} Likes</p>
+                <p>{likes} Likes</p>
                 <p className={s.post_info_description}>{description ? description : null}</p>
             </div>
         </div>
