@@ -9,6 +9,7 @@ type Props = {}
 const Profile = (props: Props) => {
     const dispatch = useAppDispatch()
     
+    
     const { profileAvi, username, subscribed, subscribers, posts, description} = useAppSelector(state => state.profile)
 
     useEffect(() => {
