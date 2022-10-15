@@ -1,13 +1,20 @@
+@import '../../styles/animations.scss';
+@import '../../styles/variables.scss';
+
 .profilepost {
     width: 32%;
     height: 300px;
-    background-color: aqua;
+    background-color: $bg-color;
     padding: 0;
 
     img {
         width: 100%;
         height: 100%;
         object-fit: cover;
+    }
+
+    &.loading {
+        animation: skeleton 1s infinite;
     }
 }
 

@@ -45,7 +45,7 @@ const Post = ({username, avi, img, likes, description}: Post) => {
                     {likeButton}
                 </div>
                 <p>{likeAmount} Likes</p>
-                <p>{description ? description : null}</p>
+                <p className={s.post_info_description}>{description ? description : null}</p>
             </div>
         </div>
   )
