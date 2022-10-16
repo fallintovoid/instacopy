@@ -42,7 +42,7 @@ export class UserService {
                 username: item.username,
                 description: dataPhotos[i].description,
                 id: dataPhotos[i].id,
-                clickAmount: 0
+                liked: false
             }
 
             return post
@@ -62,7 +62,7 @@ export class UserService {
                 likes: item.likes,
                 description: item.description,
                 id: item.id,
-                clickAmount: 0
+                liked: false
             }
 
             return post

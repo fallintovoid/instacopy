@@ -19,7 +19,7 @@ const PostList = (props: Props) => {
         description={post.description}
         key={post.img}
         id={post.id}
-        clickAmount={post.clickAmount}/>
+        liked={post.liked}/>
     })
   }
 

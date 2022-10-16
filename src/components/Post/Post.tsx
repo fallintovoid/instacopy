@@ -2,35 +2,33 @@ import React, { useState } from 'react'
 import s from './Post.module.scss'
 import { AiOutlineHeart } from 'react-icons/ai'
 import { AiFillHeart } from 'react-icons/ai'
-import { setLikes, setClickAmount } from '../../store/slices/posts/posts'
+import { setLikes, toggleClickAmount } from '../../store/slices/posts/posts'
 import { useAppDispatch } from '../../lib/hooks/hooks'
 
-const Post = ({username, avi, img, likes, description, id, clickAmount}: Post) => {
+const Post = ({username, avi, img, likes, description, id, liked}: Post) => {
     const dispatch = useAppDispatch()
 
     const onLikeHandler = (id: string) => {
-        if (clickAmount === 0) {
+        if (!liked) {
             dispatch(setLikes({
                 id,
                 amountOfLikes: 1
             }))
-            dispatch(setClickAmount({
-                id,
-                clickAmount: 1
+            dispatch(toggleClickAmount({
+                id
             }))
         } else {
             dispatch(setLikes({
                 id,
                 amountOfLikes: -1
             }))
-            dispatch(setClickAmount({
-                id,
-                clickAmount: 0
+            dispatch(toggleClickAmount({
+                id
             }))
         }
     }
 
-    const likeButton = clickAmount 
+    const likeButton = liked
         ? <AiFillHeart 
             onClick={() => onLikeHandler(id)}
             className={s.likebutton}

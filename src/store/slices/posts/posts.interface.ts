@@ -8,7 +8,6 @@ export interface SetLikesPayload {
     amountOfLikes: number;
 }
 
-export interface SetClickAmountPayload {
+export interface ToggleClickAmountPayload {
     id: string;
-    clickAmount: number;
 }
