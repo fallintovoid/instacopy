@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import s from './Post.module.scss'
 import { AiOutlineHeart } from 'react-icons/ai'
 import { AiFillHeart } from 'react-icons/ai'

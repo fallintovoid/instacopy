@@ -31,11 +31,6 @@ const Header = (props: Props) => {
                             : <AiOutlineHome className={s.icon}/>}
                         
                     </Link>
-                    <Link to='/add'>
-                        {pathname === '/add'
-                            ? <IoMdAddCircle className={s.icon}/>
-                            : <IoMdAddCircleOutline className={s.icon}/>}
-                    </Link>
                     <Link to='/profile'>
                         {pathname === '/profile'
                             ? <RiProfileFill className={s.icon}/>

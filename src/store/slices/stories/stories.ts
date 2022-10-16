@@ -4,7 +4,7 @@ import { UserService } from '../../../lib/services/UserService/UserService';
 import { StoriesState } from './stories.interface';
 import { initialState as _adminState } from "../admin/admin";
 
-const userService = new UserService(_adminState.amountOfUsersForRequest)
+const userService = new UserService(_adminState.amountOfUsersForRequest, _adminState.amountOfPostsForProfileForRequest)
 
 export const fetchAvi = createAsyncThunk(
     'stories/fetchAvi',

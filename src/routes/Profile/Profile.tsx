@@ -2,15 +2,16 @@ import React, { useEffect } from 'react'
 import ProfilePost from '../../components/ProfilePost/ProfilePost'
 import { useAppDispatch, useAppSelector } from '../../lib/hooks/hooks'
 import { getPostsForProfile } from '../../store/slices/profile/profile'
+import { AiFillSetting } from 'react-icons/ai'
+
 import s from './Profile.module.scss'
+import { Link } from 'react-router-dom'
 
 type Props = {}
 
 const Profile = (props: Props) => {
     const dispatch = useAppDispatch()
-    
-    
-    const { profileAvi, username, subscribed, subscribers, posts, description} = useAppSelector(state => state.profile)
+    const { profileAvi, username, subscribed, subscribers, posts, description, status } = useAppSelector(state => state.profile)
 
     useEffect(() => {
         dispatch(getPostsForProfile())
@@ -27,6 +28,11 @@ const Profile = (props: Props) => {
                 <div className={s.profile_information_info}>
                     <div className={s.profile_information_info_username}>
                         <p>{username}</p>
+                        <Link to='settings'>
+                            <AiFillSetting
+                                size={25}/>
+                        </Link>
+                        
                     </div>
                     <div className={s.profile_information_info_statistic}>
                         <p>
@@ -47,11 +53,13 @@ const Profile = (props: Props) => {
             
 
             <div className={s.profile_posts}>
-                {posts.map((item: Post): JSX.Element => {
+                {status === 'ok' && posts.map((item: Post): JSX.Element => {
                     return <ProfilePost
                         img={item.img}
                         key={item.id}/>
                 })}
+
+                {status === 'idle' && <ProfilePost/>}
             </div>
         </div>
     )

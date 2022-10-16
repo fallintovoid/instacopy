@@ -1,11 +1,11 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { UserService } from "../../../lib/services/UserService/UserService";
 import { initialState as _adminState } from "../admin/admin";
-import { ProfileState } from "./profile.interface";
-import { getRandomNumber } from "../../../lib/funcs/useRandomNumber";
+import { ProfileState, SetSettingsPayload } from "./profile.interface";
+import { getRandomNumber } from "../../../lib/funcs/getRandomNumber";
 
 
-const userService = new UserService(_adminState.amountOfUsersForRequest)
+const userService = new UserService(_adminState.amountOfUsersForRequest, _adminState.amountOfPostsForProfileForRequest)
 
 const initialState: ProfileState = {
     username: 'fellintovoid',
@@ -33,6 +33,11 @@ const profileSlice = createSlice({
         },
         setSubscribers: (state, action: PayloadAction<number>) => {
             state.subscribers = action.payload
+        },
+        setSettings: (state, action: PayloadAction<SetSettingsPayload>) => {
+            state.description = action.payload.description
+            state.profileAvi = action.payload.profileAvi
+            state.username = action.payload.username
         }
     },
     extraReducers(builder) {
@@ -52,6 +57,7 @@ const profileSlice = createSlice({
 
 export const {
     setSubscribed, 
-    setSubscribers
+    setSubscribers,
+    setSettings
 } = profileSlice.actions
 export default profileSlice.reducer

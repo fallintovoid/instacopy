@@ -47,6 +47,14 @@
     
             &_username {
                 font-size: 30px;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+
+                a {
+                    text-decoration: none;
+                    color: black;
+                }
             }
     
             &_statistic {
@@ -80,6 +88,7 @@
         display: flex;
         flex-wrap: wrap;
         gap: 5px;
+        margin-bottom: 25px;
     }
 }
 

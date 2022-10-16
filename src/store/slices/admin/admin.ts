@@ -2,7 +2,8 @@ import { createSlice } from "@reduxjs/toolkit";
 import { AdminState } from "./admin.interface";
 
 export const initialState: AdminState = {
-    amountOfUsersForRequest: 5
+    amountOfUsersForRequest: 5,
+    amountOfPostsForProfileForRequest: 5
 }
 
 const adminSlice = createSlice({

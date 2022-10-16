@@ -3,9 +3,11 @@ import { UnsplashResponse, PeopleApiResponse } from "./UserService.interface"
 export class UserService {
 
     private amountOfUsers: number
+    private amountOfPostsForProfileForRequest: number
 
-    constructor(amountOfUsers: number) {
+    constructor(amountOfUsers: number, amountOfPostsForProfileForRequest: number) {
         this.amountOfUsers = amountOfUsers
+        this.amountOfPostsForProfileForRequest = amountOfPostsForProfileForRequest
     }
 
     async fetchUsers(): Promise<PeopleApiResponse[]> {
@@ -51,7 +53,7 @@ export class UserService {
     }
 
     async getPostsForProfile(username: string, avi: string): Promise<Post[]> {
-        const photos = await fetch(`https://api.unsplash.com/photos?client_id=tpPYTFIEZp2r7wB5MhBnvrjHU3qhQtpu8rpXrEm9D2I&per_page=${this.amountOfUsers}&order_by=popular`)
+        const photos = await fetch(`https://api.unsplash.com/photos?client_id=tpPYTFIEZp2r7wB5MhBnvrjHU3qhQtpu8rpXrEm9D2I&per_page=${this.amountOfPostsForProfileForRequest}&order_by=popular`)
         const dataPhotos = await photos.json() as UnsplashResponse[]
 
         const posts = dataPhotos.map((item: UnsplashResponse) => {

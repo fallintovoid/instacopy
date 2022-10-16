@@ -12,3 +12,9 @@ export interface GetPostsPayload {
     username: string;
     avi: string;
 }
+
+export interface SetSettingsPayload {
+    username: string;
+    profileAvi: string;
+    description: string;
+}

@@ -2,13 +2,14 @@ import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.scss';
 import Layout from './components/Layout/Layout';
-import Addpage from './routes/Addpage/Addpage';
 import Homepage from './routes/Homepage/Homepage';
 import { useEffect } from 'react'
 import { fetchAvi } from './store/slices/stories/stories'
 import { useAppDispatch, useAppSelector } from './lib/hooks/hooks'
 import { getPosts } from './store/slices/posts/posts';
 import Profile from './routes/Profile/Profile';
+import Admin from './routes/Admin/Admin';
+import Settings from './routes/Profile/Settings/Settings';
 
 function App() {
   const dispatch = useAppDispatch()
@@ -27,8 +28,9 @@ function App() {
       <Layout>
         <Routes>
           <Route path='/' element={<Homepage/>}/>
-          <Route path='add' element={<Addpage/>}/>
           <Route path='profile' element={<Profile/>}/>
+          <Route path='admin' element={<Admin/>}/>
+          <Route path='profile/settings' element={<Settings/>}/>
         </Routes>
       </Layout>
     </BrowserRouter>
