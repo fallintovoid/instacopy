@@ -21,7 +21,6 @@ const Settings = (props: Props) => {
             .min(5, 'Username is too short')
             .max(15, 'Username is too long')
             .required('This field is required')
-            .trim('Space is not allowed')
             .strict(),
         description: Yup.string()
             .max(20, 'Description is too long'),
