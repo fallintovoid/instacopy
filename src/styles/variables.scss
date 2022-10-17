@@ -4,7 +4,21 @@
 
 $main-color: white;
 $bg-color: #f2f2f2;
-$border: 0.3px rgb(218, 218, 218) solid;
+$border-color: rgb(218, 218, 218);
+$border-width: 0.3px;
+$border: $border-width $border-color solid;
 $font-main: 'Varela Round', sans-serif;
 $font-primary: 'Roboto', sans-serif;
 $icon-size: 25px;
+
+$phone-from: 300px;
+$phone-to: 599px;
+$tablet-portrait: 600px;
+$tablet-landscape: 1000px;
+$desktop: 1280px;
+$big-desktop: 1600px;
+
+$wrapper: 700px;
+$aside-column: 250px;
+$feed-column: $wrapper - $aside-column;
+$gap: 15px;

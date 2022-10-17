@@ -10,13 +10,13 @@ type Props = {}
 const Homepage = (props: Props) => {
     return (
         <>
-            <div className="main">
+            <main className="feed-column">
                 <Stories/>
                 <PostList/>
-            </div>
-            <div className='profile'>
+            </main>
+            <aside className="aside-column">
                 <Profile/>
-            </div>
+            </aside>
         </>
     )
 }
