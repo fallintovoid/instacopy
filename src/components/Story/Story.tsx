@@ -1,3 +1,5 @@
+import { FC } from 'react';
+
 import s from './Story.module.scss'
 
 type Props = {
@@ -5,7 +7,7 @@ type Props = {
     username: string;
 }
 
-const Story = ({avi, username}: Props) => {
+const Story: FC<Props> = ({avi, username}) => {
     const completeAvi = avi
         ? <img src={avi} alt={avi}/>
         : null

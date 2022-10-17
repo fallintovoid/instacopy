@@ -1,11 +1,11 @@
-import React from 'react'
+import React, { FC } from 'react'
 import s from './Post.module.scss'
 import { AiOutlineHeart } from 'react-icons/ai'
 import { AiFillHeart } from 'react-icons/ai'
 import { setLikes, toggleClickAmount } from '../../store/slices/posts/posts'
 import { useAppDispatch } from '../../lib/hooks/hooks'
 
-const Post = ({username, avi, img, likes, description, id, liked}: Post) => {
+const Post: FC<Post> = ({username, avi, img, likes, description, id, liked}) => {
     const dispatch = useAppDispatch()
 
     const onLikeHandler = (id: string) => {

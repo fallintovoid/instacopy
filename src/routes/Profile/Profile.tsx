@@ -3,9 +3,10 @@ import ProfilePost from '../../components/ProfilePost/ProfilePost'
 import { useAppDispatch, useAppSelector } from '../../lib/hooks/hooks'
 import { getPostsForProfile } from '../../store/slices/profile/profile'
 import { AiFillSetting } from 'react-icons/ai'
+import { Link } from 'react-router-dom'
 
 import s from './Profile.module.scss'
-import { Link } from 'react-router-dom'
+
 
 type Props = {}
 

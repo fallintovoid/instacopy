@@ -5,9 +5,10 @@ import { Values } from './Settings.interface'
 import { setSettings } from '../../../store/slices/profile/profile'
 import { validateUsername } from '../../../lib/funcs/validateUsername'
 import * as Yup from 'yup'
+import { useNavigate } from 'react-router-dom'
 
 import s from './Settings.module.scss'
-import { useNavigate } from 'react-router-dom'
+
 
 type Props = {}
 
