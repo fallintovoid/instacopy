@@ -1,20 +1,16 @@
 import React from 'react'
 import { ReactComponent as Logo } from '../../images/logo.svg';
-import { ReactComponent as Add } from '../../images/add.svg';
 import { RiProfileFill, RiProfileLine } from 'react-icons/ri'
 import { AiOutlineHome, AiFillHome } from 'react-icons/ai'
-import { IoMdAddCircleOutline, IoMdAddCircle } from 'react-icons/io'
 import { Link, useLocation } from 'react-router-dom';
 
 import s from './Header.module.scss'
 
-type Props = {}
-
-const Header = (props: Props) => {
+const Header = () => {
     const { pathname } = useLocation()
 
     return (
-        <div className={s.header}>
+        <header className={s.header}>
             <div className={s.wrapper}>
                 <div className={s.logo}>
                     <Link to='/'>
@@ -38,7 +34,7 @@ const Header = (props: Props) => {
                     </Link>
                 </div>
             </div>
-        </div>
+        </header>
     )
 }
 
