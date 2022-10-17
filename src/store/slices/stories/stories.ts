@@ -2,9 +2,8 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
 import { UserService } from '../../../lib/services/UserService/UserService';
 import { StoriesState } from './stories.interface';
-import { initialState as _adminState } from "../admin/admin";
 
-const userService = new UserService(_adminState.amountOfUsersForRequest, _adminState.amountOfPostsForProfileForRequest)
+const userService = new UserService(5, 5)
 
 export const fetchAvi = createAsyncThunk(
     'stories/fetchAvi',

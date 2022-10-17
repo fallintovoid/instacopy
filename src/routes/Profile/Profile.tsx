@@ -56,6 +56,7 @@ const Profile = (props: Props) => {
                 {status === 'ok' && posts.map((item: Post): JSX.Element => {
                     return <ProfilePost
                         img={item.img}
+                        likes={item.likes}
                         key={item.id}/>
                 })}
 

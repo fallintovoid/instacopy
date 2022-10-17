@@ -1,9 +1,8 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { UserService } from "../../../lib/services/UserService/UserService";
 import { PostsState, ToggleClickAmountPayload, SetLikesPayload } from "./posts.interface";
-import { initialState as _adminState } from "../admin/admin";
 
-const userService = new UserService(_adminState.amountOfUsersForRequest, _adminState.amountOfPostsForProfileForRequest);
+const userService = new UserService(5, 5);
 
 const initialState: PostsState = {
     status: 'idle',

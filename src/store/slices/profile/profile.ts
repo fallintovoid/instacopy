@@ -1,11 +1,10 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { UserService } from "../../../lib/services/UserService/UserService";
-import { initialState as _adminState } from "../admin/admin";
 import { ProfileState, SetSettingsPayload } from "./profile.interface";
 import { getRandomNumber } from "../../../lib/funcs/getRandomNumber";
 
 
-const userService = new UserService(_adminState.amountOfUsersForRequest, _adminState.amountOfPostsForProfileForRequest)
+const userService = new UserService(5, 5)
 
 const initialState: ProfileState = {
     username: 'fellintovoid',

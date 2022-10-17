@@ -6,6 +6,7 @@
     height: 300px;
     background-color: $bg-color;
     padding: 0;
+    position: relative;
 
     img {
         width: 100%;
@@ -15,6 +16,27 @@
 
     &.loading {
         animation: skeleton 1s infinite;
+    }
+
+    &_likes {
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: black;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 5px;
+        color: white;
+        font-size: 11px;
+        opacity: 0;
+        transition: 0.3s ease-in-out;
+    }
+
+    &:hover &_likes {
+        opacity: 0.8;
     }
 }
 

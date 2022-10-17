@@ -26,6 +26,7 @@ const Settings = (props: Props) => {
             .max(20, 'Description is too long'),
         profileAvi: Yup.string()
             .url('It`s not an URL')
+            .required('This field is required')
     })
 
     return (
