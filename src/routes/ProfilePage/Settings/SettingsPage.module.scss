@@ -52,6 +52,7 @@
             border: $border;
             padding-left: 5px;
             border-radius: 5px;
+            background-color: $bg-color;
 
             @include for-phone-only {
                 min-width: 200px;
@@ -70,6 +71,7 @@
             align-items: center;
             padding-left: 5px;
             border-radius: 5px;
+            background-color: $bg-color;
         }
 
         @include for-phone-only {
