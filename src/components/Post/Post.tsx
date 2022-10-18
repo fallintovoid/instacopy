@@ -47,9 +47,7 @@ const Post: FC<Post> = ({username, avi, img, likes, description, id, liked}) => 
                 </div>
                 <p>{username}</p>
             </div>
-            <div className={s.post_image}>
-                <img src={img} alt={img}/>
-            </div>
+            <img className={s.post_image} src={img} alt={img}/>
             <div className={s.post_info}>
                 <div className={s.post_info_menu}>
                     {likeButton}

@@ -1,6 +1,5 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import './App.scss';
 import Layout from './components/Layout/Layout';
 import Homepage from './routes/Homepage/Homepage';
 import { useEffect } from 'react'

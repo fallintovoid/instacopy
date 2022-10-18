@@ -10,11 +10,9 @@ const Layout: React.FC<Props> = ({children}) => {
   return (
     <div className={s.layout}>
         <Header/>
-        <main>
-            <div>
-                {children}
-            </div>
-        </main>
+        <div className={s.main}>
+            {children}
+        </div>
     </div>
   )
 }
