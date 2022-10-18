@@ -3,6 +3,12 @@ import type { PayloadAction } from '@reduxjs/toolkit'
 import { UserService } from '../../../lib/services/UserService/UserService';
 import { StoriesState } from './stories.interface';
 
+enum StateStatus {
+    IDLE = 'idle',
+    ERROR = 'error',
+    OK = 'ok'
+}
+
 const userService = new UserService(5, 5)
 
 export const fetchAvi = createAsyncThunk(

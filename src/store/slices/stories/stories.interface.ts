@@ -1,4 +1,4 @@
 export interface StoriesState {
     stories: User[] | null;
-    status: StateStatus
+    status: 'idle' | 'error' | 'ok'
   }

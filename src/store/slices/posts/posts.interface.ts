@@ -1,5 +1,5 @@
 export interface PostsState {
-    status: StateStatus;
+    status: 'idle' | 'error' | 'ok';
     posts: Post[];
 }
 
