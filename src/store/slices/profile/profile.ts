@@ -13,7 +13,7 @@ const initialState: ProfileState = {
     subscribed: getRandomNumber(0, 1000),
     subscribers: getRandomNumber(0, 1000),
     posts: [],
-    status: 'idle'
+    status: StateStatus.IDLE
 }
 
 export const getPostsForProfile = createAsyncThunk(
@@ -42,13 +42,13 @@ const profileSlice = createSlice({
     extraReducers(builder) {
         builder 
             .addCase(getPostsForProfile.pending, (state) => {
-                state.status = 'idle'
+                state.status = StateStatus.IDLE
             })
             .addCase(getPostsForProfile.rejected, (state) => {
-                state.status = 'error'
+                state.status = StateStatus.ERROR
             })
             .addCase(getPostsForProfile.fulfilled, (state, action: PayloadAction<Post[]>) => {
-                state.status = 'ok'
+                state.status = StateStatus.OK
                 state.posts = action.payload
             })
     },

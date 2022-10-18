@@ -1,4 +1,5 @@
 @import '../../styles/variables';
+@import '../../styles/mixins.scss';
 
 .profile {
     position: sticky;
@@ -17,43 +18,37 @@
     a {
         text-decoration: none;
         color: black
-    }
+    } 
+}
 
-    &_photo {
-        max-width: 80px;
-        max-height: 80px;
-        min-width: 80px;
-        border-radius: 50%;
-        overflow: hidden;
-        cursor: pointer;
-        background-color: $main-color;
+.photo {
+    max-width: 80px;
+    max-height: 80px;
+    min-width: 80px;
+    border-radius: 50%;
+    overflow: hidden;
+    cursor: pointer;
+    background-color: $main-color;
 
-        img {
-            width: 100px;
-            height: 100px;
-            transform: translateY(-10px);
-        }
-    }
-
-    &_info {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        background-color: $main-color;
-        
-        p:nth-child(1) {
-            font-weight: 600;
-            cursor: pointer;
-        }
-
-        p:nth-child(2) {
-            color: rgb(102, 102, 102)
-        }
+    img {
+        width: 100px;
+        height: 100px;
+        transform: translateY(-10px);
     }
 }
 
-@media only screen and (max-width: 600px) {
-    .profile {
-        display: none;
-    } 
+.info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: $main-color;
+}
+
+.description {
+    color: rgb(102, 102, 102)
+}
+
+.username {
+    font-weight: 600;
+    cursor: pointer;
 }

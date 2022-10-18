@@ -14,7 +14,7 @@ export const fetchAvi = createAsyncThunk(
 
 const initialState: StoriesState = { 
     stories: [],
-    status: 'idle'
+    status: StateStatus.IDLE
 }
 
 const storiesSlice = createSlice({
@@ -24,17 +24,16 @@ const storiesSlice = createSlice({
   extraReducers(builder) {
     builder
         .addCase(fetchAvi.pending, (state) => {
-            state.status = 'idle'
+            state.status = StateStatus.IDLE
         })
         .addCase(fetchAvi.rejected, (state) => {
-            state.status = 'error'
+            state.status = StateStatus.ERROR
         })
         .addCase(fetchAvi.fulfilled, (state, action: PayloadAction<User[]>) => {
-            state.status = 'ok'
+            state.status = StateStatus.OK
             state.stories = action.payload
         })
   },
 })
 
-export const {} = storiesSlice.actions
 export default storiesSlice.reducer

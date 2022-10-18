@@ -7,7 +7,7 @@ import { validateUsername } from '../../../lib/funcs/validateUsername'
 import * as Yup from 'yup'
 import { useNavigate } from 'react-router-dom'
 
-import s from './Settings.module.scss'
+import s from './SettingsPage.module.scss'
 
 
 type Props = {}
@@ -17,7 +17,7 @@ const Settings = (props: Props) => {
     const dispatch = useAppDispatch()
     const navigate = useNavigate()
 
-    const SettingsScema = Yup.object().shape({
+    const SettingsSchema = Yup.object().shape({
         username: Yup.string()
             .min(5, 'Username is too short')
             .max(15, 'Username is too long')
@@ -32,7 +32,7 @@ const Settings = (props: Props) => {
 
     return (
         <div className={s.settings}>
-            <div className={s.settings_wrapper}>
+            <div className={s.wrapper}>
                 <h2>Your profile settings</h2>
                 <Formik
                     initialValues={{
@@ -40,7 +40,7 @@ const Settings = (props: Props) => {
                         description, 
                         profileAvi
                     }}
-                    validationSchema={SettingsScema}
+                    validationSchema={SettingsSchema}
                     onSubmit={({ username, description, profileAvi }: Values, { setSubmitting }: FormikHelpers<Values>) => {
                         dispatch(setSettings({
                             username,
@@ -51,11 +51,10 @@ const Settings = (props: Props) => {
                         navigate('../profile')
                     }}>
                         {({
-                            errors,
                             isSubmitting,
                         }) => (
-                            <Form className={s.settings_wrapper_form}>
-                                <div className={s.settings_wrapper_form_input}>
+                            <Form className={s.form}>
+                                <div className={s.input}>
                                     <label htmlFor="username">Username</label>
                                     <Field
                                         id='username'
@@ -65,14 +64,14 @@ const Settings = (props: Props) => {
                                     <ErrorMessage
                                         name='username'>
                                             {(msg) => (
-                                                <div className={s.settings_wrapper_form_input_errormessage}>
+                                                <div className={s.errormessage}>
                                                     {msg}
                                                 </div>
                                             )}
                                     </ErrorMessage>
                                 </div>
                                 
-                                <div className={s.settings_wrapper_form_input}>
+                                <div className={s.input}>
                                     <label htmlFor="description">Description</label>
                                     <Field
                                         id='description'
@@ -82,14 +81,14 @@ const Settings = (props: Props) => {
                                     <ErrorMessage
                                         name='description'>
                                             {(msg) => (
-                                                <div className={s.settings_wrapper_form_input_errormessage}>
+                                                <div className={s.errormessage}>
                                                     {msg}
                                                 </div>
                                             )}
                                     </ErrorMessage>
                                 </div>
                                 
-                                <div className={s.settings_wrapper_form_input}>
+                                <div className={s.input}>
                                     <label htmlFor="profileAvi">Link on your avatar image</label>
                                     <Field
                                         id='profileAvi'
@@ -98,7 +97,7 @@ const Settings = (props: Props) => {
                                     <ErrorMessage
                                         name='profileAvi'>
                                             {(msg) => (
-                                                <div className={s.settings_wrapper_form_input_errormessage}>
+                                                <div className={s.errormessage}>
                                                     <p>{msg}</p>
                                                 </div>
                                             )}
@@ -109,7 +108,7 @@ const Settings = (props: Props) => {
                                 <button 
                                     type='submit'
                                     disabled={isSubmitting}
-                                    className={s.settings_wrapper_form_button}>
+                                    className={s.button}>
                                         Submit
                                 </button>
                             </Form>

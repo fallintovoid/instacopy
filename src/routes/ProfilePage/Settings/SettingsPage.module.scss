@@ -1,0 +1,118 @@
+@import '../../../styles/variables';
+@import '../../../styles/mixins.scss';
+
+.settings {
+    display: flex;
+    height: 100vh;
+    width: 100%;
+    justify-content: center;
+}
+
+.wrapper {
+    height: fit-content;
+    width: $wrapper;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: $main-color;
+    border: $border;
+    border-radius: 15px;
+    padding: 20px;
+
+    @include for-phone-only {
+        width: 100%;
+        height: fit-content;
+    }
+}
+
+.form {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    .input {
+        display: flex;
+        background-color: $main-color;
+        gap: 15px;
+        align-items: center;
+        font-family: $font-primary;
+        margin-top: 10px;
+
+        label {
+            font-weight: 600;
+            font-size: 18px;
+            min-width: 210px;
+        }
+
+        input {
+            height: 35px;
+            font-family: $font-primary;
+            font-size: 15px;
+            border: $border;
+            padding-left: 5px;
+            border-radius: 5px;
+
+            @include for-phone-only {
+                min-width: 200px;
+            }
+        }
+
+        textarea {
+            resize: vertical;
+            min-width: 200px;
+            max-height: 300px;
+            height: 70px;
+            font-size: 15px;
+            font-family: $font-primary;
+            border: $border;
+            display: flex;
+            align-items: center;
+            padding-left: 5px;
+            border-radius: 5px;
+        }
+
+        @include for-phone-only {
+            display: flex;
+            flex-direction: column;
+            margin-top: 10px;
+        }
+    }
+}
+
+.button {
+    width: 100px;
+    height: 50px;
+    border-radius: 10px;
+    margin-top: 50px;
+    align-self: center;
+    border: $border;
+    cursor: pointer;
+    font-family: $font-primary;
+    background-color: rgb(85, 85, 252);
+    color: white;
+    transition: 0.1s ease-in-out;
+
+    &:hover {
+        background-color: rgb(60, 60, 255);
+    }
+}
+
+.errormessage {
+    height: 40px;
+    display: flex;
+    align-items: center;
+    padding: 0;
+    padding-left: 10px;
+    padding-right: 10px;
+    color: white;
+    background-color: rgb(255, 104, 104);
+    border-radius: 10px;
+    min-width: 130px;
+    width: fit-content;
+
+    @include for-phone-only {
+        font-size: 13px;
+    }
+}
+

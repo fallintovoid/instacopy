@@ -5,7 +5,7 @@ import { PostsState, ToggleClickAmountPayload, SetLikesPayload } from "./posts.i
 const userService = new UserService(5, 5);
 
 const initialState: PostsState = {
-    status: 'idle',
+    status: StateStatus.IDLE,
     posts: []
 }
 
@@ -31,14 +31,14 @@ const postsSlice = createSlice({
     extraReducers(builder) {
         builder
             .addCase(getPosts.pending, (state: PostsState) => {
-                state.status = 'idle'
+                state.status = StateStatus.IDLE
             })
             .addCase(getPosts.rejected, (state: PostsState) => {
-                state.status = 'error'
+                state.status = StateStatus.ERROR
             })
             .addCase(getPosts.fulfilled, (state: PostsState, action: PayloadAction<Post[]>) => {
                 state.posts = action.payload
-                state.status = 'ok'
+                state.status = StateStatus.OK
             })
     },
 })

@@ -12,15 +12,15 @@ const Profile = (props: Props) => {
     return (
         <div className={s.profile}>
             <Link to='profile'>
-                <div className={s.profile_photo}>
+                <div className={s.photo}>
                     <img src={profileAvi} alt='some'/>
                 </div>
             </Link>
-            <div className={s.profile_info}>
+            <div className={s.info}>
                 <Link to='profile'>
-                    <p>{username}</p>
+                    <p className={s.username}>{username}</p>
                 </Link>
-                <p>{description}</p>
+                <p className={s.description}>{description}</p>
             </div>
         </div>
     )

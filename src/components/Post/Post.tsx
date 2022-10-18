@@ -41,19 +41,19 @@ const Post: FC<Post> = ({username, avi, img, likes, description, id, liked}) => 
 
     return (
         <div className={s.post}>
-            <div className={s.post_user}>
-                <div className={s.post_user_avi}>
+            <div className={s.user}>
+                <div className={s.avi}>
                     <img src={avi} alt={avi}/>
                 </div>
                 <p>{username}</p>
             </div>
-            <img className={s.post_image} src={img} alt={img}/>
-            <div className={s.post_info}>
-                <div className={s.post_info_menu}>
+            <img className={s.image} src={img} alt={img}/>
+            <div className={s.info}>
+                <div className={s.menu}>
                     {likeButton}
                 </div>
                 <p>{likes} Likes</p>
-                <p className={s.post_info_description}>{description ? description : null}</p>
+                <p className={s.description}>{description ? description : null}</p>
             </div>
         </div>
   )

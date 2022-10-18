@@ -12,7 +12,7 @@ const ProfilePost: FC<Props> = ({img, likes}) => {
     return (
       <div className={s.profilepost}>
           <img src={img} alt={img}/>
-          <div className={s.profilepost_likes}>
+          <div className={s.likes}>
             <AiFillHeart
               size={25}/>
             <h1>{likes}</h1>

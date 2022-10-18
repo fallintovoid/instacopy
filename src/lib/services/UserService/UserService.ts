@@ -5,6 +5,10 @@ export class UserService {
     private amountOfUsers: number
     private amountOfPostsForProfileForRequest: number
 
+    readonly unsplashApiUrl = 'https://api.unsplash.com/'
+    readonly randomuserApiUrl = 'https://randomuser.me/api/'
+
+
     constructor(amountOfUsers: number, amountOfPostsForProfileForRequest: number) {
         this.amountOfUsers = amountOfUsers
         this.amountOfPostsForProfileForRequest = amountOfPostsForProfileForRequest
@@ -12,7 +16,7 @@ export class UserService {
 
     async fetchUsers(): Promise<PeopleApiResponse[]> {
         try {
-            const response = await fetch(`https://randomuser.me/api/?results=${this.amountOfUsers}`)
+            const response = await fetch(`${this.randomuserApiUrl}?results=${this.amountOfUsers}`)
             const data = await response.json()
             if (response.status < 200 || response.status >= 300) {
                 throw new Error('Api thrown an error. Response status: ' + response.status)
@@ -33,7 +37,7 @@ export class UserService {
         })
     }
     async getPosts(users: User[]): Promise<Post[]> {
-        const photos = await fetch(`https://api.unsplash.com/photos?client_id=tpPYTFIEZp2r7wB5MhBnvrjHU3qhQtpu8rpXrEm9D2I&per_page=${this.amountOfUsers}`)
+        const photos = await fetch(`${this.unsplashApiUrl}photos?client_id=tpPYTFIEZp2r7wB5MhBnvrjHU3qhQtpu8rpXrEm9D2I&per_page=${this.amountOfUsers}`)
         const dataPhotos = await photos.json() as UnsplashResponse[]
 
         const comparedPosts = users.map((item: User, i: number) => {
@@ -53,7 +57,7 @@ export class UserService {
     }
 
     async getPostsForProfile(username: string, avi: string): Promise<Post[]> {
-        const photos = await fetch(`https://api.unsplash.com/photos?client_id=tpPYTFIEZp2r7wB5MhBnvrjHU3qhQtpu8rpXrEm9D2I&per_page=${this.amountOfPostsForProfileForRequest}&order_by=popular`)
+        const photos = await fetch(`${this.unsplashApiUrl}photos?client_id=tpPYTFIEZp2r7wB5MhBnvrjHU3qhQtpu8rpXrEm9D2I&per_page=${this.amountOfPostsForProfileForRequest}&order_by=popular`)
         const dataPhotos = await photos.json() as UnsplashResponse[]
 
         const posts = dataPhotos.map((item: UnsplashResponse) => {

@@ -1,0 +1,9 @@
+@import '../../styles/variables.scss';
+
+.input {
+    background-color: $bg-color;
+    border: 0;
+    border-radius: 5px;
+    padding: 8px;
+    //padding-left: 10px;
+}

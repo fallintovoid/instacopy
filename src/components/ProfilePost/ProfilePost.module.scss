@@ -18,26 +18,26 @@
         animation: skeleton 1s infinite;
     }
 
-    &_likes {
-        position: absolute;
-        top: 0;
-        left: 0;
-        background-color: black;
-        width: 100%;
-        height: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 5px;
-        color: white;
-        font-size: 11px;
-        opacity: 0;
-        transition: 0.3s ease-in-out;
-    }
-
-    &:hover &_likes {
+    &:hover .likes {
         opacity: 0.8;
     }
+}
+
+.likes {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: black;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    color: white;
+    font-size: 11px;
+    opacity: 0;
+    transition: 0.3s ease-in-out;
 }
 
 @media only screen and (max-width: 600px) {

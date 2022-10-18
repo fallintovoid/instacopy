@@ -5,6 +5,7 @@ import { AiOutlineHome, AiFillHome } from 'react-icons/ai'
 import { Link, useLocation } from 'react-router-dom';
 
 import s from './Header.module.scss'
+import Input from '../Input/Input';
 
 const Header = () => {
     const { pathname } = useLocation()
@@ -17,7 +18,7 @@ const Header = () => {
                 </Link>
                 <div className={s.searchbar}>
                     {/*TODO: сделать инпут компонентом*/}
-                    <input className={s.searchbar_input} placeholder='Search'/>
+                    <Input placeholder='Search'/>
                 </div>
                 <menu className={s.menu}>
                     <ul className={s.list}>

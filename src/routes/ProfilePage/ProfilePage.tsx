@@ -5,7 +5,7 @@ import { getPostsForProfile } from '../../store/slices/profile/profile'
 import { AiFillSetting } from 'react-icons/ai'
 import { Link } from 'react-router-dom'
 
-import s from './Profile.module.scss'
+import s from './ProfilePage.module.scss'
 
 
 type Props = {}
@@ -16,18 +16,18 @@ const Profile = (props: Props) => {
 
     useEffect(() => {
         dispatch(getPostsForProfile())
-    }, [])
+    }, [dispatch])
 
     return (
         <div className={s.profile}>
-            <div className={s.profile_information}>
-                <div className={s.profile_information_avi}>
-                    <div className={s.profile_information_avi_wrapper}>
+            <div className={s.information}>
+                <div className={s.avi}>
+                    <div className={s.wrapper}>
                         <img src={profileAvi} alt={profileAvi}/>
                     </div>
                 </div>
-                <div className={s.profile_information_info}>
-                    <div className={s.profile_information_info_username}>
+                <div className={s.userinfo}>
+                    <div className={s.username}>
                         <p>{username}</p>
                         <Link to='settings'>
                             <AiFillSetting
@@ -35,7 +35,7 @@ const Profile = (props: Props) => {
                         </Link>
                         
                     </div>
-                    <div className={s.profile_information_info_statistic}>
+                    <div className={s.statistic}>
                         <p>
                             <span className={s.number}>{posts.length}</span> posts
                         </p>
@@ -46,14 +46,14 @@ const Profile = (props: Props) => {
                             <span className={s.number}>{subscribed}</span> followed
                         </p>
                     </div>
-                    <div className={s.profile_information_info_description}>
+                    <div className={s.description}>
                         {description}
                     </div>
                 </div>
             </div>
             
 
-            <div className={s.profile_posts}>
+            <div className={s.posts}>
                 {status === 'ok' && posts.map((item: Post): JSX.Element => {
                     return <ProfilePost
                         img={item.img}
