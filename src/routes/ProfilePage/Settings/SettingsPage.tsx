@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Formik, FormikHelpers, Form, Field, ErrorMessage } from 'formik'
 import { useAppDispatch, useAppSelector } from '../../../lib/hooks/hooks'
 import { Values } from './Settings.interface'
@@ -16,6 +16,10 @@ const Settings = (props: Props) => {
     const { username, description, profileAvi } = useAppSelector(state => state.profile)
     const dispatch = useAppDispatch()
     const navigate = useNavigate()
+
+    useEffect(() => {
+        document.title = 'Settings'
+    }, [])
 
     const SettingsSchema = Yup.object().shape({
         username: Yup.string()

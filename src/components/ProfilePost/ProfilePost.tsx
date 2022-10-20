@@ -1,7 +1,6 @@
 import React, { FC } from 'react'
 import s from './ProfilePost.module.scss'
 import { AiFillHeart } from 'react-icons/ai'
-import Skeleton from 'react-loading-skeleton';
 
 type Props = {
     img?: string;

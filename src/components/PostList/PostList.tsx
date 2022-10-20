@@ -1,5 +1,4 @@
 import React from 'react'
-import Skeleton from 'react-loading-skeleton'
 import { useAppSelector } from '../../lib/hooks/hooks'
 import Post from '../Post/Post'
 import s from './PostList.module.scss'
@@ -28,7 +27,7 @@ const PostList = (props: Props) => {
   return (
     <div className={s.postlist}>
       {status === 'ok' && renderPostList(posts)}
-      {status === 'ok' && <SkeltonPost />}
+      {status === 'idle' && <SkeltonPost />}
         
     </div>
   )

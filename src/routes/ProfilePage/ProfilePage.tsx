@@ -19,6 +19,10 @@ const Profile = (props: Props) => {
         dispatch(getPostsForProfile())
     }, [dispatch])
 
+    useEffect(() => {
+        document.title = username
+    }, [])
+
     return (
         <div className={s.profile}>
             <div className={s.information}>
