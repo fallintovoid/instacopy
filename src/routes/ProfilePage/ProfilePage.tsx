@@ -4,6 +4,7 @@ import { useAppDispatch, useAppSelector } from '../../lib/hooks/hooks'
 import { getPostsForProfile } from '../../store/slices/profile/profile'
 import { AiFillSetting } from 'react-icons/ai'
 import { Link } from 'react-router-dom'
+import Skeleton from 'react-loading-skeleton'
 
 import s from './ProfilePage.module.scss'
 
@@ -60,8 +61,7 @@ const Profile = (props: Props) => {
                         likes={item.likes}
                         key={item.id}/>
                 })}
-
-                {status === 'idle' && <ProfilePost/>}
+                {status === 'idle' && <Skeleton width={220} height={300}/>}
             </div>
         </div>
     )
