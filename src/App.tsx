@@ -8,6 +8,8 @@ import { useAppDispatch, useAppSelector } from './lib/hooks/hooks'
 import { getPosts } from './store/slices/posts/posts';
 import Profile from './routes/ProfilePage/ProfilePage';
 import Settings from './routes/ProfilePage/Settings/SettingsPage';
+import { SkeletonTheme } from 'react-loading-skeleton';
+import "react-loading-skeleton/dist/skeleton.css";
 
 function App() {
   const dispatch = useAppDispatch()
@@ -22,15 +24,18 @@ function App() {
   }, [users, dispatch])
 
   return (
-    <BrowserRouter>
-      <Layout>
-        <Routes>
-          <Route path='/' element={<Homepage/>}/>
-          <Route path='profile' element={<Profile/>}/>
-          <Route path='profile/settings' element={<Settings/>}/>
-        </Routes>
-      </Layout>
-    </BrowserRouter>
+    <SkeletonTheme baseColor="#DADADA" highlightColor="#B7B2B2 ">
+      <BrowserRouter>
+        <Layout>
+          <Routes>
+            <Route path='/' element={<Homepage/>}/>
+            <Route path='profile' element={<Profile/>}/>
+            <Route path='profile/settings' element={<Settings/>}/>
+          </Routes>
+        </Layout>
+      </BrowserRouter>
+    </SkeletonTheme>
+    
   );
 }
 

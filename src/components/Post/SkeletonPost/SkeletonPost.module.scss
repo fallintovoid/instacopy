@@ -1,0 +1,12 @@
+@import "../../../styles/variables.scss";
+
+.skeleton {
+    display: flex;
+    flex-direction: column;
+}
+
+.info {
+    display: flex;
+    gap: $gap;
+    align-items: center;
+}

@@ -1,13 +1,15 @@
 import React from 'react'
+import Skeleton from 'react-loading-skeleton'
 import { useAppSelector } from '../../lib/hooks/hooks'
 import Post from '../Post/Post'
 import s from './PostList.module.scss'
+import SkeltonPost from '../Post/SkeletonPost/SkeltonPost'
 
 
 type Props = {}
 
 const PostList = (props: Props) => {
-  const posts = useAppSelector(state => state.posts.posts)
+  const { posts, status } = useAppSelector(state => state.posts)
 
   const renderPostList = (posts: Post[]) => {
     return posts.map((post: Post) => {
@@ -25,7 +27,9 @@ const PostList = (props: Props) => {
 
   return (
     <div className={s.postlist}>
-      {renderPostList(posts)}
+      {status === 'ok' && renderPostList(posts)}
+      {status === 'ok' && <SkeltonPost />}
+        
     </div>
   )
 }
