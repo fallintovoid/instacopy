@@ -2,6 +2,7 @@ import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { UserService } from "../../../lib/services/UserService/UserService";
 import { ProfileState, SetSettingsPayload } from "./profile.interface";
 import { getRandomNumber } from "../../../lib/funcs/getRandomNumber";
+import { StateStatus } from '../../../common';
 
 const userService = new UserService(5, 5)
 

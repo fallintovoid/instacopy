@@ -2,6 +2,8 @@ import React from 'react'
 import Skeleton from 'react-loading-skeleton'
 import { Link } from 'react-router-dom'
 import { useAppSelector } from '../../lib/hooks/hooks'
+import { StateStatus } from '../../common';
+
 import s from './Profile.module.scss'
 
 type Props = {}

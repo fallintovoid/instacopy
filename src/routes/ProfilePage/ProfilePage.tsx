@@ -5,6 +5,7 @@ import { getPostsForProfile } from '../../store/slices/profile/profile'
 import { AiFillSetting } from 'react-icons/ai'
 import { Link } from 'react-router-dom'
 import Skeleton from 'react-loading-skeleton'
+import { StateStatus } from '../../common';
 
 import s from './ProfilePage.module.scss'
 
@@ -13,7 +14,7 @@ type Props = {}
 
 const Profile = (props: Props) => {
     const dispatch = useAppDispatch()
-    const { profileAvi, username, subscribed, subscribers, posts, description, status } = useAppSelector(state => state.profile)
+    const { profileAvi, username, subscribed, subscribers, posts, description, status, photoStatus } = useAppSelector(state => state.profile)
 
     useEffect(() => {
         dispatch(getPostsForProfile())
@@ -27,9 +28,13 @@ const Profile = (props: Props) => {
         <div className={s.profile}>
             <div className={s.information}>
                 <div className={s.avi}>
-                    <div className={s.wrapper}>
-                        <img src={profileAvi} alt={profileAvi}/>
-                    </div>
+                    {photoStatus === StateStatus.OK && 
+                        <div className={s.wrapper}>
+                            <img src={profileAvi} alt={profileAvi}/>
+                        </div>}
+                    {photoStatus === StateStatus.IDLE &&
+                        <Skeleton circle width={170} height={170}/>}
+                    
                 </div>
                 <div className={s.userinfo}>
                     <div className={s.username}>

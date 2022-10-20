@@ -1,3 +1,5 @@
+import { StateStatus } from '../../../common';
+
 export interface ProfileState {
     username: string;
     description: string;

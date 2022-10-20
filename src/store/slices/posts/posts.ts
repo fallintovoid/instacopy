@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { UserService } from "../../../lib/services/UserService/UserService";
 import { PostsState, ToggleClickAmountPayload, SetLikesPayload } from "./posts.interface";
+import { StateStatus } from '../../../common';
 
 const userService = new UserService(5, 5);
 

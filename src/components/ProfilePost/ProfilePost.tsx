@@ -10,7 +10,6 @@ type Props = {
 const ProfilePost: FC<Props> = ({img, likes}) => {
   return (
     <div className={s.profilepost}>
-        <img src={img} alt={img}/>
         <div className={s.likes}>
           <AiFillHeart
             size={25}/>

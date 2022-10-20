@@ -2,6 +2,7 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
 import { UserService } from '../../../lib/services/UserService/UserService';
 import { StoriesState } from './stories.interface';
+import { StateStatus } from '../../../common';
 
 const userService = new UserService(5, 5)
 

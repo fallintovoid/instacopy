@@ -1,8 +1,10 @@
 import React from 'react'
 import { useAppSelector } from '../../lib/hooks/hooks'
 import Post from '../Post/Post'
-import s from './PostList.module.scss'
 import SkeltonPost from '../SkeletonPost/SkeltonPost'
+import { StateStatus } from '../../common';
+
+import s from './PostList.module.scss'
 
 
 type Props = {}
