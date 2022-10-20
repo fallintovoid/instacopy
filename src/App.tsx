@@ -10,6 +10,7 @@ import Profile from './routes/ProfilePage/ProfilePage';
 import Settings from './routes/ProfilePage/Settings/SettingsPage';
 import { SkeletonTheme } from 'react-loading-skeleton';
 import "react-loading-skeleton/dist/skeleton.css";
+import { getPhotoForProfile } from './store/slices/profile/profile'
 
 function App() {
   const dispatch = useAppDispatch()
@@ -17,6 +18,7 @@ function App() {
 
   useEffect((): void => {
     dispatch(fetchAvi())
+    dispatch(getPhotoForProfile())
   }, [dispatch])
 
   useEffect(() => {

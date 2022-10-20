@@ -1,4 +1,4 @@
-import { UnsplashResponse, PeopleApiResponse } from "./UserService.interface"
+import { UnsplashResponse, PeopleApiResponse, UnsplashRandomPhotoResponse } from "./UserService.interface"
 
 export class UserService {
 
@@ -7,6 +7,7 @@ export class UserService {
 
     readonly unsplashApiUrl = 'https://api.unsplash.com/'
     readonly randomuserApiUrl = 'https://randomuser.me/api/'
+    readonly clientId = 'tpPYTFIEZp2r7wB5MhBnvrjHU3qhQtpu8rpXrEm9D2I'
 
 
     constructor(amountOfUsers: number, amountOfPostsForProfileForRequest: number) {
@@ -37,7 +38,7 @@ export class UserService {
         })
     }
     async getPosts(users: User[]): Promise<Post[]> {
-        const photos = await fetch(`${this.unsplashApiUrl}photos?client_id=tpPYTFIEZp2r7wB5MhBnvrjHU3qhQtpu8rpXrEm9D2I&per_page=${this.amountOfUsers}`)
+        const photos = await fetch(`${this.unsplashApiUrl}photos?client_id=${this.clientId}&per_page=${this.amountOfUsers}`)
         const dataPhotos = await photos.json() as UnsplashResponse[]
 
         const comparedPosts = users.map((item: User, i: number) => {
@@ -57,7 +58,7 @@ export class UserService {
     }
 
     async getPostsForProfile(username: string, avi: string): Promise<Post[]> {
-        const photos = await fetch(`${this.unsplashApiUrl}photos?client_id=tpPYTFIEZp2r7wB5MhBnvrjHU3qhQtpu8rpXrEm9D2I&per_page=${this.amountOfPostsForProfileForRequest}&order_by=popular`)
+        const photos = await fetch(`${this.unsplashApiUrl}photos?client_id=${this.clientId}&per_page=${this.amountOfPostsForProfileForRequest}&order_by=popular`)
         const dataPhotos = await photos.json() as UnsplashResponse[]
 
         const posts = dataPhotos.map((item: UnsplashResponse) => {
@@ -75,6 +76,13 @@ export class UserService {
         })
 
         return posts
+    }
+
+    async getRandomPhoto(): Promise<string> {
+        const photo = await fetch(`${this.unsplashApiUrl}photos/random?client_id=${this.clientId}`)
+        const dataPhoto = await photo.json() as UnsplashRandomPhotoResponse
+
+        return dataPhoto.urls.full
     }
 
 }

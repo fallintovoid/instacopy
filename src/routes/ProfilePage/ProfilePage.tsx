@@ -21,7 +21,7 @@ const Profile = (props: Props) => {
 
     useEffect(() => {
         document.title = username
-    }, [])
+    }, [username])
 
     return (
         <div className={s.profile}>

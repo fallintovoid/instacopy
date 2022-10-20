@@ -1,4 +1,5 @@
 import React from 'react'
+import Skeleton from 'react-loading-skeleton'
 import { Link } from 'react-router-dom'
 import { useAppSelector } from '../../lib/hooks/hooks'
 import s from './Profile.module.scss'
@@ -7,14 +8,16 @@ type Props = {}
 
 const Profile = (props: Props) => {
 
-    const { username, description, profileAvi } = useAppSelector(state => state.profile)
+    const { username, description, profileAvi, photoStatus } = useAppSelector(state => state.profile)
 
     return (
         <div className={s.profile}>
             <Link to='profile'>
-                <div className={s.photo}>
-                    <img src={profileAvi} alt='some'/>
-                </div>
+                {photoStatus === 'ok' && 
+                    <div className={s.photo}>
+                        <img src={profileAvi} alt='some'/>
+                    </div>}
+                {photoStatus === 'idle' && <Skeleton width={80} height={80} circle/>}
             </Link>
             <div className={s.info}>
                 <Link to='profile'>

@@ -11,14 +11,24 @@ enum StateStatus {
 
 const userService = new UserService(5, 5)
 
+export const getPhotoForProfile = createAsyncThunk(
+    'profile/getPhotoForProfile',
+    async () => {
+        const photoUrl = await userService.getRandomPhoto()
+
+        return photoUrl
+    }
+)
+
 const initialState: ProfileState = {
     username: 'fellintovoid',
     description: 'develop yourself',
-    profileAvi: 'https://images.unsplash.com/photo-1612018941629-71e929b5403f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80',
+    profileAvi: '',
     subscribed: getRandomNumber(0, 1000),
     subscribers: getRandomNumber(0, 1000),
     posts: [],
-    status: StateStatus.IDLE
+    status: StateStatus.IDLE,
+    photoStatus: StateStatus.IDLE
 }
 
 export const getPostsForProfile = createAsyncThunk(
@@ -55,6 +65,16 @@ const profileSlice = createSlice({
             .addCase(getPostsForProfile.fulfilled, (state, action: PayloadAction<Post[]>) => {
                 state.status = StateStatus.OK
                 state.posts = action.payload
+            })
+            .addCase(getPhotoForProfile.pending, (state) => {
+                state.photoStatus = StateStatus.IDLE
+            })
+            .addCase(getPhotoForProfile.rejected, (state) => {
+                state.photoStatus = StateStatus.ERROR
+            })
+            .addCase(getPhotoForProfile.fulfilled, (state, action: PayloadAction<string>) => {
+                state.photoStatus = StateStatus.OK
+                state.profileAvi = action.payload
             })
     },
 })

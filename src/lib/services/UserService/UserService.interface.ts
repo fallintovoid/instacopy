@@ -30,3 +30,9 @@ export interface UnsplashResponse {
         thumb: string;
     }
 }
+
+export interface UnsplashRandomPhotoResponse {
+    urls: {
+        full: string
+    }
+}
