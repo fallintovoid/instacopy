@@ -2,13 +2,6 @@ import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { UserService } from "../../../lib/services/UserService/UserService";
 import { PostsState, ToggleClickAmountPayload, SetLikesPayload } from "./posts.interface";
 
-
-enum StateStatus {
-    IDLE = 'idle',
-    ERROR = 'error',
-    OK = 'ok'
-}
-
 const userService = new UserService(5, 5);
 
 const initialState: PostsState = {

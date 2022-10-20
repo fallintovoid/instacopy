@@ -3,12 +3,6 @@ import { UserService } from "../../../lib/services/UserService/UserService";
 import { ProfileState, SetSettingsPayload } from "./profile.interface";
 import { getRandomNumber } from "../../../lib/funcs/getRandomNumber";
 
-enum StateStatus {
-    IDLE = 'idle',
-    ERROR = 'error',
-    OK = 'ok'
-}
-
 const userService = new UserService(5, 5)
 
 export const getPhotoForProfile = createAsyncThunk(

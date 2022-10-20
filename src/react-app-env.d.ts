@@ -20,3 +20,9 @@ interface Post {
     id: string;
     liked: boolean;
 }
+
+enum StateStatus {
+    IDLE = 'idle',
+    ERROR = 'error',
+    OK = 'ok'
+}

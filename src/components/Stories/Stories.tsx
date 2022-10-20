@@ -18,8 +18,8 @@ const Stories = (props: Props) => {
 
   return (
     <div className={s.stories}>
-      {status === 'ok' && storiesList(stories)}
-      {status === 'idle' && <Skeleton height={70} width={70} count={5} inline circle style={{"marginLeft": 10}}/>}
+      {status === StateStatus.OK && storiesList(stories)}
+      {status === StateStatus.IDLE && <Skeleton height={70} width={70} count={5} inline circle style={{"marginLeft": 10}}/>}
     </div>
   )
 }

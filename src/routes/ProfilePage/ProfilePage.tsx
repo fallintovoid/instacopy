@@ -59,13 +59,13 @@ const Profile = (props: Props) => {
             
 
             <div className={s.posts}>
-                {status === 'ok' && posts.map((item: Post): JSX.Element => {
+                {status === StateStatus.OK && posts.map((item: Post): JSX.Element => {
                     return <ProfilePost
                         img={item.img}
                         likes={item.likes}
                         key={item.id}/>
                 })}
-                {status === 'idle' && <Skeleton width={220} height={300}/>}
+                {status === StateStatus.IDLE && <Skeleton width={220} height={300}/>}
             </div>
         </div>
     )

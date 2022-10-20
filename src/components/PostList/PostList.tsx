@@ -2,7 +2,7 @@ import React from 'react'
 import { useAppSelector } from '../../lib/hooks/hooks'
 import Post from '../Post/Post'
 import s from './PostList.module.scss'
-import SkeltonPost from '../Post/SkeletonPost/SkeltonPost'
+import SkeltonPost from '../SkeletonPost/SkeltonPost'
 
 
 type Props = {}
@@ -26,8 +26,8 @@ const PostList = (props: Props) => {
 
   return (
     <div className={s.postlist}>
-      {status === 'ok' && renderPostList(posts)}
-      {status === 'idle' && <SkeltonPost />}
+      {status === StateStatus.OK && renderPostList(posts)}
+      {status === StateStatus.IDLE && <SkeltonPost />}
         
     </div>
   )

@@ -13,11 +13,11 @@ const Profile = (props: Props) => {
     return (
         <div className={s.profile}>
             <Link to='profile'>
-                {photoStatus === 'ok' && 
+                {photoStatus === StateStatus.OK && 
                     <div className={s.photo}>
                         <img src={profileAvi} alt='some'/>
                     </div>}
-                {photoStatus === 'idle' && <Skeleton width={80} height={80} circle/>}
+                {photoStatus === StateStatus.IDLE && <Skeleton width={80} height={80} circle/>}
             </Link>
             <div className={s.info}>
                 <Link to='profile'>

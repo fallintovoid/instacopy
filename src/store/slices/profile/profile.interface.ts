@@ -5,8 +5,8 @@ export interface ProfileState {
     subscribed: number;
     profileAvi: string;
     posts: Post[];
-    status: 'idle' | 'error' | 'ok';
-    photoStatus: 'idle' | 'error' | 'ok'
+    status: StateStatus;
+    photoStatus: StateStatus;
 }
 
 export interface GetPostsPayload {
