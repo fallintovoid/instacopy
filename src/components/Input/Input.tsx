@@ -1,21 +1,24 @@
-import React, { FC } from 'react'
+import React, { FC } from "react";
 
-import s from './Input.module.scss'
+import s from "./Input.module.scss";
 
 type Props = {
-    placeholder: string;
-    id?: string;
-    name?: string;
-}
+  placeholder: string;
+  id?: string;
+  name?: string;
+  onChange?: () => void;
+};
 
-const Input: FC<Props> = ({ placeholder, id, name }) => {
+const Input: FC<Props> = ({ placeholder, id, name, onChange }) => {
   return (
-    <input 
-        className={s.input} 
-        placeholder={placeholder}
-        id={id}
-        name={name}/>
-  )
-}
+    <input
+      onChange={onChange}
+      className={s.input}
+      placeholder={placeholder}
+      id={id}
+      name={name}
+    />
+  );
+};
 
-export default Input
+export default Input;
