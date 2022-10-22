@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Layout from './components/Layout/Layout';
-import Homepage from './routes/HomePage/Homepage';
+import Homepage from './routes/Homepage/Homepage';
 import { useEffect } from 'react'
 import { fetchAvi } from './store/slices/stories/stories'
 import { useAppDispatch, useAppSelector } from './lib/hooks/hooks'
