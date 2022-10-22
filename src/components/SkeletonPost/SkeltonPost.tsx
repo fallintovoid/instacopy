@@ -18,12 +18,10 @@ const SkeltonPost = (props: Props) => {
       </div>
       <div className={s.photo}> 
         <Skeleton
-          width={450}
           height={300}/>
       </div>
       <div className={s.description}>
         <Skeleton
-          width={450}
           height={100}/>
       </div>
     </div>
