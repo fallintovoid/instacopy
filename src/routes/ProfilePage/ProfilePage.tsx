@@ -32,16 +32,14 @@ const Profile = (props: Props) => {
                         <div className={s.wrapper}>
                             <img src={profileAvi} alt={profileAvi}/>
                         </div>}
-                    {photoStatus === StateStatus.IDLE &&
-                        <Skeleton circle width={170} height={170}/>}
+                    {photoStatus === StateStatus.IDLE && <Skeleton circle width={170} height={170}/>}
                     
                 </div>
                 <div className={s.userinfo}>
                     <div className={s.username}>
                         <p>{username}</p>
                         <Link to='settings'>
-                            <AiFillSetting
-                                size={25}/>
+                            <AiFillSetting size={25}/>
                         </Link>
                         
                     </div>
@@ -65,10 +63,7 @@ const Profile = (props: Props) => {
 
             <div className={s.posts}>
                 {status === StateStatus.OK && posts.map((item: Post): JSX.Element => {
-                    return <ProfilePost
-                        img={item.img}
-                        likes={item.likes}
-                        key={item.id}/>
+                    return <ProfilePost post={item} key={item.id}/>
                 })}
                 {status === StateStatus.IDLE && <Skeleton width={220} height={300}/>}
             </div>

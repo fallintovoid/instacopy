@@ -1,23 +1,22 @@
-import React, { FC } from 'react'
-import s from './ProfilePost.module.scss'
-import { AiFillHeart } from 'react-icons/ai'
+import React from "react";
+import s from "./ProfilePost.module.scss";
+import { AiFillHeart } from "react-icons/ai";
 
-type Props = {
-    img?: string;
-    likes?: number;
+interface PostProps {
+  post: Post;
 }
 
-const ProfilePost: FC<Props> = ({img, likes}) => {
+function ProfilePost({ post }: PostProps) {
+  const { img, description, likes } = post;
   return (
     <div className={s.profilepost}>
-        <img src={img} alt={img}/>
-        <div className={s.likes}>
-          <AiFillHeart
-            size={25}/>
-          <h1>{likes}</h1>
-        </div>
+      <img src={img} alt={description} />
+      <div className={s.likes}>
+        <AiFillHeart size={25} />
+        <h1>{likes}</h1>
+      </div>
     </div>
-  )
+  );
 }
 
-export default ProfilePost
+export default ProfilePost;
