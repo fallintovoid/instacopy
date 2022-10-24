@@ -1,6 +1,5 @@
 export enum StateStatus {
-    IDLE = 'idle',
-    ERROR = 'error',
-    OK = 'ok'
+  IDLE = "idle",
+  ERROR = "error",
+  OK = "ok",
 }
-  

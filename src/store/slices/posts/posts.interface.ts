@@ -1,15 +1,15 @@
-import { StateStatus } from '../../../common';
+import { StateStatus } from "../../../common";
 
 export interface PostsState {
-    status: StateStatus;
-    posts: Post[];
+  status: StateStatus;
+  posts: Post[];
 }
 
 export interface SetLikesPayload {
-    id: string;
-    amountOfLikes: number;
+  id: string;
+  amountOfLikes: number;
 }
 
 export interface ToggleClickAmountPayload {
-    id: string;
+  id: string;
 }

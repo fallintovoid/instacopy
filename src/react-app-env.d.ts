@@ -1,22 +1,22 @@
 /// <reference types="react-scripts" />
 
 interface User {
-    avi: PictureSizes;
-    username: string;
+  avi: PictureSizes;
+  username: string;
 }
 
 interface PictureSizes {
-    large: string;
-    medium: string;
-    thumbnail: string;
+  large: string;
+  medium: string;
+  thumbnail: string;
 }
 
 interface Post {
-    img: string;
-    avi: string;
-    username: string;
-    likes: number;
-    description: string;
-    id: string;
-    liked: boolean;
+  img: string;
+  avi: string;
+  username: string;
+  likes: number;
+  description: string;
+  id: string;
+  liked: boolean;
 }
