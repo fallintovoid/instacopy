@@ -11,7 +11,7 @@ interface PictureSizes {
   thumbnail: string;
 }
 
-interface Post {
+interface FeedPost {
   img: string;
   avi: string;
   username: string;
@@ -19,4 +19,8 @@ interface Post {
   description: string;
   id: string;
   liked: boolean;
+}
+
+interface ProfilePost extends FeedPost {
+  blur_hash: string;
 }

@@ -3,11 +3,12 @@ import s from "./ProfilePost.module.scss";
 import { AiFillHeart } from "react-icons/ai";
 
 interface Props {
-  post: Post;
+  post: ProfilePost;
 }
 
 function ProfilePost({ post }: Props) {
-  const { img, description, likes } = post;
+  const { img, likes, description } = post;
+
   return (
     <div className={s.profilepost}>
       <img src={img} alt={description} />

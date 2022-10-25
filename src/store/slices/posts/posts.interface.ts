@@ -2,7 +2,7 @@ import { StateStatus } from "../../../common";
 
 export interface PostsState {
   status: StateStatus;
-  posts: Post[];
+  posts: FeedPost[];
 }
 
 export interface SetLikesPayload {

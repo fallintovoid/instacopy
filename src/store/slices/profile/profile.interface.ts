@@ -6,7 +6,7 @@ export interface ProfileState {
   subscribers: number;
   subscribed: number;
   profileAvi: string;
-  posts: Post[];
+  posts: ProfilePost[];
   status: StateStatus;
   photoStatus: StateStatus;
 }

@@ -39,15 +39,15 @@ export class UserService {
     });
   }
 
-  async getPosts(users: User[]): Promise<Post[]> {
+  async getPosts(users: User[], page: number): Promise<FeedPost[]> {
     const photos = await fetch(
-      `${this.unsplashApiUrl}photos?client_id=${this.clientId}&per_page=${this.amountOfUsers}`
+      `${this.unsplashApiUrl}photos?client_id=${this.clientId}&per_page=${this.amountOfUsers}&page=${page}`
     );
     const dataPhotos = (await photos.json()) as UnsplashResponse[];
 
     const comparedPosts = users.map((item: User, i: number) => {
-      const post: Post = {
-        img: dataPhotos[i].urls.regular,
+      const post: FeedPost = {
+        img: dataPhotos[i].urls.small,
         likes: dataPhotos[i].likes,
         avi: item.avi.medium,
         username: item.username,
@@ -61,22 +61,24 @@ export class UserService {
     return comparedPosts;
   }
 
-  async getPostsForProfile(username: string, avi: string): Promise<Post[]> {
+  async getPostsForProfile(username: string, avi: string): Promise<ProfilePost[]> {
     const photos = await fetch(
       `${this.unsplashApiUrl}photos?client_id=${this.clientId}&per_page=${this.amountOfPostsForProfileForRequest}&order_by=popular`
     );
     const dataPhotos = (await photos.json()) as UnsplashResponse[];
 
     const posts = dataPhotos.map((item: UnsplashResponse) => {
-      const post: Post = {
+      const post: ProfilePost = {
         avi,
-        img: item.urls.full,
+        img: item.urls.small,
         username,
         likes: item.likes,
         description: item.description,
         id: item.id,
         liked: false,
+        blur_hash: item.blur_hash,
       };
+      console.log(post);
 
       return post;
     });
@@ -88,6 +90,6 @@ export class UserService {
     const photo = await fetch(`${this.unsplashApiUrl}photos/random?client_id=${this.clientId}`);
     const dataPhoto = (await photo.json()) as UnsplashRandomPhotoResponse;
 
-    return dataPhoto.urls.full;
+    return dataPhoto.urls.thumb;
   }
 }
