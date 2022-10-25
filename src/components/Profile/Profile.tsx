@@ -6,12 +6,8 @@ import { StateStatus } from "../../common";
 
 import s from "./Profile.module.scss";
 
-type Props = {};
-
-const Profile = (props: Props) => {
-  const { username, description, profileAvi, photoStatus } = useAppSelector(
-    (state) => state.profile
-  );
+const Profile = () => {
+  const { username, description, profileAvi, photoStatus } = useAppSelector((state) => state.profile);
 
   return (
     <div className={s.profile}>
@@ -21,9 +17,7 @@ const Profile = (props: Props) => {
             <img src={profileAvi} alt="some" />
           </div>
         )}
-        {photoStatus === StateStatus.IDLE && (
-          <Skeleton width={80} height={80} circle />
-        )}
+        {photoStatus === StateStatus.IDLE && <Skeleton width={80} height={80} circle />}
       </Link>
       <div className={s.info}>
         <Link to="profile">

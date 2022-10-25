@@ -1,27 +1,27 @@
-@import '../../styles/variables.scss';
-@import '../../styles/mixins.scss';
+@import "../../styles/variables.scss";
+@import "../../styles/mixins.scss";
 
 .feed-column {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  grid-gap: $gap;
+
+  & > * {
     width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    grid-gap: $gap;
+  }
 
-    & > * {
-        width: 100%;
-    }
-
-    @include for-tablet-landscape-up {
-        max-width: $feed-column;
-    }
+  @include for-tablet-landscape-up {
+    max-width: $feed-column;
+  }
 }
 
 .aside-column {
-    width: 100%;
-    display: none;
+  width: 100%;
+  display: none;
 
-    @include for-tablet-landscape-up {
-        display: block;
-        max-width: $aside-column;
-    }
+  @include for-tablet-landscape-up {
+    display: block;
+    max-width: $aside-column;
+  }
 }

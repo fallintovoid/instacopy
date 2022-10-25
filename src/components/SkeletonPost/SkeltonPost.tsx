@@ -3,9 +3,7 @@ import Skeleton from "react-loading-skeleton";
 
 import s from "./SkeletonPost.module.scss";
 
-type Props = {};
-
-const SkeltonPost = (props: Props) => {
+const SkeltonPost = () => {
   return (
     <div className={s.skeleton}>
       <div className={s.info}>

@@ -1,8 +1,4 @@
-import {
-  UnsplashResponse,
-  PeopleApiResponse,
-  UnsplashRandomPhotoResponse,
-} from "./UserService.interface";
+import { UnsplashResponse, PeopleApiResponse, UnsplashRandomPhotoResponse } from "./UserService.interface";
 
 export class UserService {
   private amountOfUsers: number;
@@ -15,24 +11,17 @@ export class UserService {
 
   readonly clientId = "tpPYTFIEZp2r7wB5MhBnvrjHU3qhQtpu8rpXrEm9D2I";
 
-  constructor(
-    amountOfUsers: number,
-    amountOfPostsForProfileForRequest: number
-  ) {
+  constructor(amountOfUsers: number, amountOfPostsForProfileForRequest: number) {
     this.amountOfUsers = amountOfUsers;
     this.amountOfPostsForProfileForRequest = amountOfPostsForProfileForRequest;
   }
 
   async fetchUsers(): Promise<PeopleApiResponse[]> {
     try {
-      const response = await fetch(
-        `${this.randomuserApiUrl}?results=${this.amountOfUsers}`
-      );
+      const response = await fetch(`${this.randomuserApiUrl}?results=${this.amountOfUsers}`);
       const data = await response.json();
       if (response.status < 200 || response.status >= 300) {
-        throw new Error(
-          "Api thrown an error. Response status: " + response.status
-        );
+        throw new Error("Api thrown an error. Response status: " + response.status);
       }
       return data.results as PeopleApiResponse[];
     } catch (error) {
@@ -96,9 +85,7 @@ export class UserService {
   }
 
   async getRandomPhoto(): Promise<string> {
-    const photo = await fetch(
-      `${this.unsplashApiUrl}photos/random?client_id=${this.clientId}`
-    );
+    const photo = await fetch(`${this.unsplashApiUrl}photos/random?client_id=${this.clientId}`);
     const dataPhoto = (await photo.json()) as UnsplashRandomPhotoResponse;
 
     return dataPhoto.urls.full;

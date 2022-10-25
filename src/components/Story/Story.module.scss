@@ -1,35 +1,35 @@
-@import '../../styles/variables.scss';
+@import "../../styles/variables.scss";
 
 .story {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: $main-color;
-    gap: 5px;
-    cursor: pointer;
-    min-width: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: $main-color;
+  gap: 5px;
+  cursor: pointer;
+  min-width: 100px;
 
-    p {
-        font-size: 0.7rem;
-    }
+  p {
+    font-size: 0.7rem;
+  }
 }
 
 .photo {
-    max-width: 70px;
-    min-width: 70px;
-    max-height: 70px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    overflow: hidden;
-    border-radius: 50%;
-    border: rgb(251, 0, 201) 3px solid;
-    background-color: $main-color;
+  max-width: 70px;
+  min-width: 70px;
+  max-height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: 50%;
+  border: rgb(251, 0, 201) 3px solid;
+  background-color: $main-color;
 
-    img {
-        width: 85px;
-        height: 85px;
-    }
+  img {
+    width: 85px;
+    height: 85px;
+  }
 }

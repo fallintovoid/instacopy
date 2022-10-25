@@ -1,10 +1,6 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { UserService } from "../../../lib/services/UserService/UserService";
-import {
-  PostsState,
-  ToggleClickAmountPayload,
-  SetLikesPayload,
-} from "./posts.interface";
+import { PostsState, ToggleClickAmountPayload, SetLikesPayload } from "./posts.interface";
 import { StateStatus } from "../../../common";
 
 const userService = new UserService(5, 5);
@@ -14,28 +10,19 @@ const initialState: PostsState = {
   posts: [],
 };
 
-export const getPosts = createAsyncThunk(
-  "posts/getPosts",
-  async (users: User[]): Promise<Post[]> => {
-    return userService.getPosts(users);
-  }
-);
+export const getPosts = createAsyncThunk("posts/getPosts", async (users: User[]): Promise<Post[]> => {
+  return userService.getPosts(users);
+});
 
 const postsSlice = createSlice({
   name: "posts",
   initialState,
   reducers: {
     setLikes: (state, action: PayloadAction<SetLikesPayload>) => {
-      state.posts.find((item: Post) => item.id === action.payload.id)!.likes +=
-        action.payload.amountOfLikes;
+      state.posts.find((item: Post) => item.id === action.payload.id)!.likes += action.payload.amountOfLikes;
     },
-    toggleClickAmount: (
-      state,
-      action: PayloadAction<ToggleClickAmountPayload>
-    ) => {
-      const currentPost = state.posts.find(
-        (item: Post) => item.id === action.payload.id
-      );
+    toggleClickAmount: (state, action: PayloadAction<ToggleClickAmountPayload>) => {
+      const currentPost = state.posts.find((item: Post) => item.id === action.payload.id);
       currentPost!.liked = !currentPost!.liked;
     },
   },
@@ -47,13 +34,10 @@ const postsSlice = createSlice({
       .addCase(getPosts.rejected, (state: PostsState) => {
         state.status = StateStatus.ERROR;
       })
-      .addCase(
-        getPosts.fulfilled,
-        (state: PostsState, action: PayloadAction<Post[]>) => {
-          state.posts = action.payload;
-          state.status = StateStatus.OK;
-        }
-      );
+      .addCase(getPosts.fulfilled, (state: PostsState, action: PayloadAction<Post[]>) => {
+        state.posts = action.payload;
+        state.status = StateStatus.OK;
+      });
   },
 });
 

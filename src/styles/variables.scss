@@ -1,14 +1,14 @@
 //TODO: лучше загрузить их локально
-@import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Varela+Round&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
 
 $main-color: white;
 $bg-color: #f2f2f2;
 $border-color: rgb(218, 218, 218);
 $border-width: 0.3px;
 $border: $border-width $border-color solid;
-$font-main: 'Varela Round', sans-serif;
-$font-primary: 'Roboto', sans-serif;
+$font-main: "Varela Round", sans-serif;
+$font-primary: "Roboto", sans-serif;
 $icon-size: 25px;
 
 $phone-from: 300px;

@@ -1,129 +1,127 @@
-@import '../../styles/variables';
-@import '../../styles/mixins.scss';
+@import "../../styles/variables";
+@import "../../styles/mixins.scss";
 
 .profile {
-    width: 100%;
-    background-color: $bg-color;
-    height: fit-content;
-    display: flex;
-    flex-direction: column;
+  width: 100%;
+  background-color: $bg-color;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
 }
 
-
 .userinfo {
-    width: 60%;
-    height: 200px;
+  width: 60%;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: $gap;
+
+  @include for-phone-only {
+    width: 70%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    gap: $gap;
-
-    @include for-phone-only {
-        width: 70%;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        height: fit-content;
-    }
+    justify-content: flex-start;
+    height: fit-content;
+  }
 }
 
 .username {
-    font-size: 30px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
+  font-size: 30px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 
-    a {
-        text-decoration: none;
-        color: black;
-    }
+  a {
+    text-decoration: none;
+    color: black;
+  }
 
-    @include for-phone-only {
-        font-size: 20px;
-        height: fit-content;
-    }
+  @include for-phone-only {
+    font-size: 20px;
+    height: fit-content;
+  }
 }
 
 .statistic {
-    width: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  gap: 15px;
+
+  p {
     display: flex;
-    justify-content: flex-start;
-    gap: 15px;
+    gap: 5px;
+
+    .number {
+      font-weight: 600;
+    }
+  }
+
+  @include for-phone-only {
+    display: flex;
+    height: fit-content;
+    gap: 7px;
 
     p {
-        display: flex;
-        gap: 5px;
-
-        .number {
-            font-weight: 600;
-        }
+      font-size: 14px;
     }
-
-    @include for-phone-only {
-        display: flex;
-        height: fit-content;
-        gap: 7px;
-
-        p {
-            font-size: 14px;
-        }
-    }
+  }
 }
 
 .description {
-    font-weight: 600;
-    font-size: 18px;
+  font-weight: 600;
+  font-size: 18px;
 
-    @include for-phone-only {
-        height: fit-content;
-        font-weight: 400;
-    }
+  @include for-phone-only {
+    height: fit-content;
+    font-weight: 400;
+  }
 }
 
 .information {
-    display: flex;
+  display: flex;
 
-    @include for-phone-only {
-        height: fit-content;
-    }
+  @include for-phone-only {
+    height: fit-content;
+  }
 }
 
 .avi {
-    max-width: 280px;
-    padding: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  max-width: 280px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .wrapper {
-    width: 90px;
-    height: 90px;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
 
-    @include for-tablet-portrait-up {
-        width: 170px;
-        height: 170px;
-    }
+  @include for-tablet-portrait-up {
+    width: 170px;
+    height: 170px;
+  }
 }
 
-
 img {
-    object-fit: cover;
-    width: 100%;
-    height: 100%;
-    margin: 0;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  margin: 0;
 }
 
 .posts {
-    width: 100%;
-    height: fit-content;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 5px;
-    margin-bottom: 25px;
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-bottom: 25px;
 }

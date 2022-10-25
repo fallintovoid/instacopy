@@ -1,81 +1,80 @@
-@import '../../styles/variables.scss';
-@import '../../styles/mixins.scss';
+@import "../../styles/variables.scss";
+@import "../../styles/mixins.scss";
 
 .header {
-    //height: 60px;
-    background-color: $main-color;
-    border-bottom: $border;
-    font-family: $font-main;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 15px;
+  //height: 60px;
+  background-color: $main-color;
+  border-bottom: $border;
+  font-family: $font-main;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 15px;
 }
 
 .header_inner {
-    max-width: $wrapper;
-    width: 100%;
-    display: flex;
-    padding: 15px;
-    align-items: center;
-    justify-content: space-between;
+  max-width: $wrapper;
+  width: 100%;
+  display: flex;
+  padding: 15px;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .logo {
-    display: block;
-    position: relative;
-    top: 5px;
+  display: block;
+  position: relative;
+  top: 5px;
 }
 
 // TODO: странное решение, что ты хотел сделать?
 .searchbar {
-    display: flex;
-    height: 100%;
-    width: 100%;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
 
-    @include for-phone-only {
-        display: none;
-    }
+  @include for-phone-only {
+    display: none;
+  }
 }
 
 .searchbar_input {
-    background-color: $bg-color;
-    border: 0;
-    border-radius: 5px;
-    padding: 8px;
-    //padding-left: 10px;
+  background-color: $bg-color;
+  border: 0;
+  border-radius: 5px;
+  padding: 8px;
+  //padding-left: 10px;
 }
 
 .menu {
-    width: 60%;
-    height: 100%;
+  width: 60%;
+  height: 100%;
 
-    @include for-tablet-landscape-up {
-        width: 30%;
-    }
+  @include for-tablet-landscape-up {
+    width: 30%;
+  }
 }
 
 .list {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    gap: 10px;
-    list-style-type: none;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  list-style-type: none;
 }
 
 .link {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 30px;
-    height: 30px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
 }
 
 .icon {
-    height: $icon-size;
-    width: $icon-size;
-    color: black;
+  height: $icon-size;
+  width: $icon-size;
+  color: black;
 }
-

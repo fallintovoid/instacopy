@@ -3,9 +3,9 @@ import { ReactComponent as Logo } from "../../images/logo.svg";
 import { RiProfileFill, RiProfileLine } from "react-icons/ri";
 import { AiOutlineHome, AiFillHome } from "react-icons/ai";
 import { Link, useLocation } from "react-router-dom";
+import Input from "../Input/Input";
 
 import s from "./Header.module.scss";
-import Input from "../Input/Input";
 
 const Header = () => {
   const { pathname } = useLocation();
@@ -27,20 +27,12 @@ const Header = () => {
           <ul className={s.list}>
             <li>
               <Link className={s.link} to="/">
-                {pathname === "/" ? (
-                  <AiFillHome className={s.icon} />
-                ) : (
-                  <AiOutlineHome className={s.icon} />
-                )}
+                {pathname === "/" ? <AiFillHome className={s.icon} /> : <AiOutlineHome className={s.icon} />}
               </Link>
             </li>
             <li>
               <Link className={s.link} to="/profile">
-                {pathname === "/profile" ? (
-                  <RiProfileFill className={s.icon} />
-                ) : (
-                  <RiProfileLine className={s.icon} />
-                )}
+                {pathname === "/profile" ? <RiProfileFill className={s.icon} /> : <RiProfileLine className={s.icon} />}
               </Link>
             </li>
           </ul>

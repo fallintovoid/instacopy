@@ -6,9 +6,7 @@ import { StateStatus } from "../../common";
 
 import s from "./PostList.module.scss";
 
-type Props = {};
-
-const PostList = (props: Props) => {
+const PostList = () => {
   const { posts, status } = useAppSelector((state) => state.posts);
 
   const renderPostList = (posts: Post[]) => {

@@ -1,9 +1,7 @@
 import React from "react";
 import Skeleton from "react-loading-skeleton";
 
-type Props = {};
-
-const SkeletonStories = (props: Props) => {
+const SkeletonStories = () => {
   return (
     <>
       <Skeleton height={70} width={70} circle />

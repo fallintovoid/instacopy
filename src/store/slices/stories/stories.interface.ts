@@ -1,6 +1,6 @@
 import { StateStatus } from "../../../common";
 
 export interface StoriesState {
-  stories: User[] | null;
+  stories: User[];
   status: StateStatus;
 }

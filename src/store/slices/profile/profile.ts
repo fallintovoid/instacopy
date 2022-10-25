@@ -6,14 +6,11 @@ import { StateStatus } from "../../../common";
 
 const userService = new UserService(5, 5);
 
-export const getPhotoForProfile = createAsyncThunk(
-  "profile/getPhotoForProfile",
-  async () => {
-    const photoUrl = await userService.getRandomPhoto();
+export const getPhotoForProfile = createAsyncThunk("profile/getPhotoForProfile", async () => {
+  const photoUrl = await userService.getRandomPhoto();
 
-    return photoUrl;
-  }
-);
+  return photoUrl;
+});
 
 const initialState: ProfileState = {
   username: "fellintovoid",
@@ -26,15 +23,9 @@ const initialState: ProfileState = {
   photoStatus: StateStatus.IDLE,
 };
 
-export const getPostsForProfile = createAsyncThunk(
-  "profile/getPostsForProfile",
-  async (): Promise<Post[]> => {
-    return userService.getPostsForProfile(
-      initialState.username,
-      initialState.profileAvi
-    );
-  }
-);
+export const getPostsForProfile = createAsyncThunk("profile/getPostsForProfile", async (): Promise<Post[]> => {
+  return userService.getPostsForProfile(initialState.username, initialState.profileAvi);
+});
 
 const profileSlice = createSlice({
   name: "profile",
@@ -60,29 +51,22 @@ const profileSlice = createSlice({
       .addCase(getPostsForProfile.rejected, (state) => {
         state.status = StateStatus.ERROR;
       })
-      .addCase(
-        getPostsForProfile.fulfilled,
-        (state, action: PayloadAction<Post[]>) => {
-          state.status = StateStatus.OK;
-          state.posts = action.payload;
-        }
-      )
+      .addCase(getPostsForProfile.fulfilled, (state, action: PayloadAction<Post[]>) => {
+        state.status = StateStatus.OK;
+        state.posts = action.payload;
+      })
       .addCase(getPhotoForProfile.pending, (state) => {
         state.photoStatus = StateStatus.IDLE;
       })
       .addCase(getPhotoForProfile.rejected, (state) => {
         state.photoStatus = StateStatus.ERROR;
       })
-      .addCase(
-        getPhotoForProfile.fulfilled,
-        (state, action: PayloadAction<string>) => {
-          state.photoStatus = StateStatus.OK;
-          state.profileAvi = action.payload;
-        }
-      );
+      .addCase(getPhotoForProfile.fulfilled, (state, action: PayloadAction<string>) => {
+        state.photoStatus = StateStatus.OK;
+        state.profileAvi = action.payload;
+      });
   },
 });
 
-export const { setSubscribed, setSubscribers, setSettings } =
-  profileSlice.actions;
+export const { setSubscribed, setSubscribers, setSettings } = profileSlice.actions;
 export default profileSlice.reducer;

@@ -1,4 +1,4 @@
-import { FC } from "react";
+import React from "react";
 
 import s from "./Story.module.scss";
 
@@ -7,7 +7,7 @@ type Props = {
   username: string;
 };
 
-const Story: FC<Props> = ({ avi, username }) => {
+const Story = ({ avi, username }: Props) => {
   const completeAvi = avi ? <img src={avi} alt={avi} /> : null;
   return (
     <div className={s.story}>

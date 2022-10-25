@@ -5,9 +5,7 @@ import Profile from "../../components/Profile/Profile";
 
 import "./Homepage.scss";
 
-type Props = {};
-
-const Homepage = (props: Props) => {
+const Homepage = () => {
   useEffect(() => {
     document.title = "Home";
   }, []);

@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import ProfilePost from "../../components/ProfilePost/ProfilePost";
 import { useAppDispatch, useAppSelector } from "../../lib/hooks/hooks";
 import { getPostsForProfile } from "../../store/slices/profile/profile";
@@ -9,20 +9,11 @@ import { StateStatus } from "../../common";
 
 import s from "./ProfilePage.module.scss";
 
-type Props = {};
-
-const Profile = (props: Props) => {
+const Profile = () => {
   const dispatch = useAppDispatch();
-  const {
-    profileAvi,
-    username,
-    subscribed,
-    subscribers,
-    posts,
-    description,
-    status,
-    photoStatus,
-  } = useAppSelector((state) => state.profile);
+  const { profileAvi, username, subscribed, subscribers, posts, description, status, photoStatus } = useAppSelector(
+    (state) => state.profile
+  );
 
   useEffect(() => {
     dispatch(getPostsForProfile());
@@ -41,9 +32,7 @@ const Profile = (props: Props) => {
               <img src={profileAvi} alt={profileAvi} />
             </div>
           )}
-          {photoStatus === StateStatus.IDLE && (
-            <Skeleton circle width={170} height={170} />
-          )}
+          {photoStatus === StateStatus.IDLE && <Skeleton circle width={170} height={170} />}
         </div>
         <div className={s.userinfo}>
           <div className={s.username}>

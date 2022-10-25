@@ -9,16 +9,8 @@ type Props = {
   onChange?: () => void;
 };
 
-const Input: FC<Props> = ({ placeholder, id, name, onChange }) => {
-  return (
-    <input
-      onChange={onChange}
-      className={s.input}
-      placeholder={placeholder}
-      id={id}
-      name={name}
-    />
-  );
+const Input = ({ placeholder, id, name, onChange }: Props) => {
+  return <input onChange={onChange} className={s.input} placeholder={placeholder} id={id} name={name} />;
 };
 
 export default Input;

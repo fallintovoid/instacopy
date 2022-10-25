@@ -6,12 +6,9 @@ import { StateStatus } from "../../../common";
 
 const userService = new UserService(5, 5);
 
-export const fetchAvi = createAsyncThunk(
-  "stories/fetchAvi",
-  async (): Promise<User[]> => {
-    return userService.getInfoForStories();
-  }
-);
+export const fetchAvi = createAsyncThunk("stories/fetchAvi", async (): Promise<User[]> => {
+  return userService.getInfoForStories();
+});
 
 const initialState: StoriesState = {
   stories: [],

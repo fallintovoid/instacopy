@@ -6,7 +6,7 @@ type Props = {
   children?: JSX.Element | JSX.Element[];
 };
 
-const Layout: React.FC<Props> = ({ children }) => {
+const Layout = ({ children }: Props) => {
   return (
     <div className={s.layout}>
       <Header />

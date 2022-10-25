@@ -1,11 +1,11 @@
-@import '../../styles/variables.scss';
+@import "../../styles/variables.scss";
 
 .main {
-    display: flex;
-    grid-gap: $gap;
-    justify-content: center;
-    max-width: $wrapper;
-    font-family: $font-main;
-    margin-left: auto;
-    margin-right: auto;
+  display: flex;
+  grid-gap: $gap;
+  justify-content: center;
+  max-width: $wrapper;
+  font-family: $font-main;
+  margin-left: auto;
+  margin-right: auto;
 }
