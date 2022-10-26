@@ -1,4 +1,4 @@
-import React, { lazy, Suspense } from "react";
+import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "./components/Layout/Layout";
 import Homepage from "./routes/HomePage/Homepage";
@@ -8,10 +8,8 @@ import { useAppDispatch } from "./lib/hooks/hooks";
 import { SkeletonTheme } from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import { getPhotoForProfile } from "./store/slices/profile/profile";
-import Loading from "./components/Loading/Loading";
-
-const Profile = lazy(() => import("./routes/ProfilePage/ProfilePage"));
-const Settings = lazy(() => import("./routes/ProfilePage/Settings/SettingsPage"));
+import Settings from "./routes/ProfilePage/Settings/SettingsPage";
+import Profile from "./routes/ProfilePage/ProfilePage";
 
 function App() {
   const dispatch = useAppDispatch();
@@ -19,7 +17,7 @@ function App() {
   useEffect((): void => {
     dispatch(fetchAvi());
     dispatch(getPhotoForProfile());
-  }, [dispatch]);
+  }, []);
 
   return (
     <SkeletonTheme baseColor="#DADADA" highlightColor="#B7B2B2 ">
@@ -27,14 +25,7 @@ function App() {
         <Layout>
           <Routes>
             <Route path="/" element={<Homepage />} />
-            <Route
-              path="profile"
-              element={
-                <Suspense fallback={<Loading />}>
-                  <Profile />
-                </Suspense>
-              }
-            />
+            <Route path="profile" element={<Profile />} />
             <Route path="profile/settings" element={<Settings />} />
           </Routes>
         </Layout>

@@ -16,7 +16,7 @@ interface GetPostArgs {
 }
 
 export const getPosts = createAsyncThunk("posts/getPosts", async (args: GetPostArgs): Promise<FeedPost[]> => {
-  return userService.getPosts(args.users, args.page);
+  return await userService.getPosts(args.users, args.page);
 });
 
 const postsSlice = createSlice({

@@ -58,6 +58,7 @@ export class UserService {
 
       return post;
     });
+    console.log(comparedPosts);
     return comparedPosts;
   }
 

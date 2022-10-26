@@ -10,7 +10,6 @@ import "./Homepage.scss";
 const Homepage = () => {
   const dispatch = useAppDispatch();
   const users = useAppSelector((state) => state.stories.stories);
-  const posts = useAppSelector((state) => state.posts.posts);
   const [page, setPage] = useState(1);
   const [fetching, setFetching] = useState(true);
 
@@ -22,12 +21,12 @@ const Homepage = () => {
   };
 
   useEffect(() => {
-    if (fetching || !posts) {
+    if (fetching && users.length) {
       dispatch(getPosts({ users, page }));
       setPage((prev) => prev + 1);
       setFetching(false);
     }
-  }, [fetching]);
+  }, [fetching, users]);
 
   useEffect(() => {
     document.addEventListener("scroll", scrollHandler);
