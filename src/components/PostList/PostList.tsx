@@ -3,6 +3,7 @@ import { useAppSelector } from "../../lib/hooks/hooks";
 import Post from "../Post/Post";
 import SkeltonPost from "../SkeletonPost/SkeltonPost";
 import { StateStatus } from "../../common";
+import { v4 } from "uuid";
 
 import s from "./PostList.module.scss";
 
@@ -18,7 +19,7 @@ const PostList = () => {
           img={post.img}
           likes={post.likes}
           description={post.description}
-          key={post.img}
+          key={v4()}
           id={post.id}
           liked={post.liked}
         />

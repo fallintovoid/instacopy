@@ -10,7 +10,7 @@ const Stories = () => {
 
   const storiesList = (stories: User[]): JSX.Element[] | JSX.Element => {
     return stories.map((story) => {
-      return <Story avi={story.avi.large} username={story.username} key={story.username} />;
+      return <Story avi={story.avi.large} username={story.username} key={story.id} id={story.id} />;
     });
   };
 

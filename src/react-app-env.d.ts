@@ -3,6 +3,7 @@
 interface User {
   avi: PictureSizes;
   username: string;
+  id: string;
 }
 
 interface PictureSizes {
@@ -23,4 +24,12 @@ interface FeedPost {
 
 interface ProfilePost extends FeedPost {
   blur_hash: string;
+}
+
+interface Storie {
+  avi: PictureSizes;
+  username: string;
+  img: string;
+  liked: boolean;
+  id: string;
 }

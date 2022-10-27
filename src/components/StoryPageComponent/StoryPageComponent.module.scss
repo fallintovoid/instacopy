@@ -1,0 +1,57 @@
+@import "../../styles/variables.scss";
+
+.story {
+    height: 850px;
+    width: 80%;
+    background-color: black;
+    border-radius: 15px;
+    overflow: hidden;
+    margin-bottom: 13px;
+    position: relative;
+
+    .main_photo {
+        object-fit: cover;
+    }
+}
+.user {
+    position: absolute;
+    height: 70px;
+    background-color: #B4B3B3;
+    width: 100%;
+    box-shadow: 0px 15px 22px 19px #B4B3B3;
+    padding: 10px;
+
+    .timeline_gray {
+        height: 4px;
+        background-color: #818181;
+        border-radius: 5px;
+        width: 100%;
+        margin-bottom: 15px;
+        position: relative;
+
+        .timeline_white {
+            position: absolute;
+            width: 0px;
+            background-color: white;
+            border-radius: 5px;
+            height: 4px;
+        }
+    }
+
+    .userinfo {
+        display: flex;
+        align-items: center;
+        gap: $gap;
+    }
+
+    p {
+        color: white;
+    }
+
+    .user_avi {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+}

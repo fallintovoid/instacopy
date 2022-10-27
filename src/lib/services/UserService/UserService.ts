@@ -35,6 +35,7 @@ export class UserService {
       return {
         avi: user.picture,
         username: user.login.username,
+        id: user.login.uuid,
       } as User;
     });
   }
@@ -58,7 +59,6 @@ export class UserService {
 
       return post;
     });
-    console.log(comparedPosts);
     return comparedPosts;
   }
 
@@ -79,7 +79,6 @@ export class UserService {
         liked: false,
         blur_hash: item.blur_hash,
       };
-      console.log(post);
 
       return post;
     });
@@ -92,5 +91,26 @@ export class UserService {
     const dataPhoto = (await photo.json()) as UnsplashRandomPhotoResponse;
 
     return dataPhoto.urls.thumb;
+  }
+
+  async getStories(users: User[]): Promise<Storie[]> {
+    const photos = await fetch(
+      `${this.unsplashApiUrl}photos?client_id=${this.clientId}&per_page=${this.amountOfPostsForProfileForRequest}`
+    );
+
+    const dataPhoto = (await photos.json()) as UnsplashResponse[];
+
+    const comparedStories = users.map((item: User, i: number): Storie => {
+      const storie: Storie = {
+        avi: item.avi,
+        username: item.username,
+        img: dataPhoto[i].urls.regular,
+        liked: false,
+        id: item.id,
+      };
+      return storie;
+    });
+    console.log(comparedStories);
+    return comparedStories;
   }
 }
