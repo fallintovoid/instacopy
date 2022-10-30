@@ -10,8 +10,8 @@ import s from "./PostList.module.scss";
 const PostList = () => {
   const { posts, status } = useAppSelector((state) => state.posts);
 
-  const renderPostList = (posts: FeedPost[]) => {
-    return posts.map((post: FeedPost) => {
+  const renderPostList = (posts: Post[]) => {
+    return posts.map((post: Post) => {
       return (
         <Post
           avi={post.avi}

@@ -8,13 +8,16 @@
     overflow: hidden;
     margin-bottom: 13px;
     position: relative;
-
-    .main_photo {
-        object-fit: cover;
-    }
 }
+
+.main_photo {
+    object-fit: cover;
+    cursor: pointer;
+}
+
 .user {
     position: absolute;
+    z-index: 9999;
     height: 70px;
     background-color: #B4B3B3;
     width: 100%;

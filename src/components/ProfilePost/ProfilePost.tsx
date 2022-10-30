@@ -3,7 +3,7 @@ import s from "./ProfilePost.module.scss";
 import { AiFillHeart } from "react-icons/ai";
 
 interface Props {
-  post: ProfilePost;
+  post: Post;
 }
 
 function ProfilePost({ post }: Props) {

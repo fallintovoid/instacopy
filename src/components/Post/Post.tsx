@@ -5,7 +5,7 @@ import { AiFillHeart } from "react-icons/ai";
 import { setLikes, toggleClickAmount } from "../../store/slices/posts/posts";
 import { useAppDispatch } from "../../lib/hooks/hooks";
 
-const Post = ({ username, avi, img, likes, description, id, liked }: FeedPost) => {
+const Post = ({ username, avi, img, likes, description, id, liked }: Post) => {
   const dispatch = useAppDispatch();
 
   const onLikeHandler = (idPost: string) => {

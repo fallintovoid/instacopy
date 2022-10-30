@@ -1,6 +1,7 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useAppSelector } from "../../lib/hooks/hooks";
+import { useAppDispatch, useAppSelector } from "../../lib/hooks/hooks";
+import { setCurrentStoriesIndex } from "../../store/slices/stories/users";
 
 import s from "./StoryPageComponent.module.scss";
 
@@ -10,20 +11,33 @@ type Props = {
   img: string;
   liked: boolean;
   id: string;
-  storie: [string];
-  setStorie: React.Dispatch<React.SetStateAction<[string]>>;
+  storyId: string;
 };
 
-const StoryPageComponent = ({ avi, username, img, storie, setStorie }: Props) => {
-  const [width, setWidth] = useState(0);
-  const ref = useRef<HTMLDivElement>(null);
+const StoryPageComponent = ({ avi, username, img }: Props) => {
+  const dispatch = useAppDispatch();
+  const { currentStoriesIndex, users } = useAppSelector((state) => state.users);
   const navigate = useNavigate();
-  const { storiesPage } = useAppSelector((state) => state.stories);
+  const ref = useRef<HTMLDivElement>(null);
+  const [width, setWidth] = useState(0);
+
+  const navigateToStory = async () => {
+    if (currentStoriesIndex === users.length - 1) {
+      dispatch(setCurrentStoriesIndex(0));
+      navigate(`/${users[currentStoriesIndex].id}`);
+    } else {
+      dispatch(setCurrentStoriesIndex(currentStoriesIndex + 1));
+      navigate(`/${users[currentStoriesIndex].id}`);
+    }
+  };
 
   useEffect(() => {
     const timeline = setInterval(() => {
       setWidth((prev) => prev + 1);
-    }, 5);
+      if (width >= ref.current!.offsetWidth) {
+        navigateToStory();
+      }
+    }, 10);
 
     return () => {
       clearInterval(timeline);
@@ -41,7 +55,7 @@ const StoryPageComponent = ({ avi, username, img, storie, setStorie }: Props) =>
           <p>{username}</p>
         </div>
       </div>
-      <img src={img} className={s.main_photo} />
+      <img src={img} className={s.main_photo} onClick={navigateToStory} />
     </div>
   );
 };

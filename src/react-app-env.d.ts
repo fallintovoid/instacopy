@@ -1,9 +1,11 @@
 /// <reference types="react-scripts" />
 
 interface User {
-  avi: PictureSizes;
+  avi: string;
   username: string;
   id: string;
+  story: string;
+  liked: boolean;
 }
 
 interface PictureSizes {
@@ -12,7 +14,7 @@ interface PictureSizes {
   thumbnail: string;
 }
 
-interface FeedPost {
+interface Post {
   img: string;
   avi: string;
   username: string;
@@ -20,16 +22,4 @@ interface FeedPost {
   description: string;
   id: string;
   liked: boolean;
-}
-
-interface ProfilePost extends FeedPost {
-  blur_hash: string;
-}
-
-interface Storie {
-  avi: PictureSizes;
-  username: string;
-  img: string;
-  liked: boolean;
-  id: string;
 }

@@ -6,17 +6,17 @@ import { StateStatus } from "../../common";
 import SkeletonStories from "../SkeletonStories/SkeletonStories";
 
 const Stories = () => {
-  const { stories, status } = useAppSelector((state) => state.stories);
+  const { users, status } = useAppSelector((state) => state.users);
 
-  const storiesList = (stories: User[]): JSX.Element[] | JSX.Element => {
-    return stories.map((story) => {
-      return <Story avi={story.avi.large} username={story.username} key={story.id} id={story.id} />;
+  const storiesList = (users: User[]): JSX.Element[] | JSX.Element => {
+    return users.map((user) => {
+      return <Story avi={user.avi} username={user.username} key={user.id} id={user.id} />;
     });
   };
 
   return (
     <div className={s.stories}>
-      {status === StateStatus.OK && storiesList(stories)}
+      {status === StateStatus.OK && storiesList(users)}
       {status === StateStatus.IDLE && <SkeletonStories />}
     </div>
   );

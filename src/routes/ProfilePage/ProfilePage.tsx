@@ -58,7 +58,7 @@ const Profile = () => {
 
       <div className={s.posts}>
         {status === StateStatus.OK &&
-          posts.map((item: ProfilePost): JSX.Element => {
+          posts.map((item: Post): JSX.Element => {
             return <ProfilePost post={item} key={item.id} />;
           })}
         {status === StateStatus.IDLE && <Skeleton width={220} height={300} />}

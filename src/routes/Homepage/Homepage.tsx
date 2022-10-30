@@ -3,30 +3,29 @@ import { useAppDispatch, useAppSelector } from "../../lib/hooks/hooks";
 import Stories from "../../components/Stories/Stories";
 import PostList from "../../components/PostList/PostList";
 import Profile from "../../components/Profile/Profile";
-import { getPosts } from "../../store/slices/posts/posts";
+import { getPosts, setFetching, setPage } from "../../store/slices/posts/posts";
 
 import "./Homepage.scss";
+import { StateStatus } from "../../common";
 
 const Homepage = () => {
   const dispatch = useAppDispatch();
-  const users = useAppSelector((state) => state.stories.stories);
-  const [page, setPage] = useState(1);
-  const [fetching, setFetching] = useState(true);
-
+  const { users, status } = useAppSelector((state) => state.users);
+  const { page, fetching } = useAppSelector((state) => state.posts);
   const scrollHandler = (e: any) => {
     // TODO: как это описать?
     if (e.target.documentElement.scrollHeight - (e.target.documentElement.scrollTop + window.innerHeight) < 100) {
-      setFetching(true);
+      dispatch(setFetching(true));
     }
   };
 
   useEffect(() => {
-    if (fetching && users.length) {
+    if (fetching && status === StateStatus.OK) {
       dispatch(getPosts({ users, page }));
-      setPage((prev) => prev + 1);
-      setFetching(false);
+      dispatch(setPage(page + 1));
+      dispatch(setFetching(false));
     }
-  }, [fetching, users]);
+  }, [fetching, status]);
 
   useEffect(() => {
     document.addEventListener("scroll", scrollHandler);

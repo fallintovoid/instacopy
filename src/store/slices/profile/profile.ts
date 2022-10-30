@@ -23,7 +23,7 @@ const initialState: ProfileState = {
   photoStatus: StateStatus.IDLE,
 };
 
-export const getPostsForProfile = createAsyncThunk("profile/getPostsForProfile", async (): Promise<ProfilePost[]> => {
+export const getPostsForProfile = createAsyncThunk("profile/getPostsForProfile", async (): Promise<Post[]> => {
   return userService.getPostsForProfile(initialState.username, initialState.profileAvi);
 });
 
@@ -51,7 +51,7 @@ const profileSlice = createSlice({
       .addCase(getPostsForProfile.rejected, (state) => {
         state.status = StateStatus.ERROR;
       })
-      .addCase(getPostsForProfile.fulfilled, (state, action: PayloadAction<ProfilePost[]>) => {
+      .addCase(getPostsForProfile.fulfilled, (state, action: PayloadAction<Post[]>) => {
         state.status = StateStatus.OK;
         state.posts = action.payload;
       })

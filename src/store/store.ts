@@ -1,11 +1,11 @@
 import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit";
-import stories from "./slices/stories/stories";
+import users from "./slices/stories/users";
 import posts from "./slices/posts/posts";
 import profile from "./slices/profile/profile";
 
 export const store = configureStore({
   reducer: {
-    stories,
+    users,
     posts,
     profile,
   },
