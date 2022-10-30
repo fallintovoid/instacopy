@@ -27,9 +27,9 @@ function App() {
         <Layout>
           <Routes>
             <Route index element={<Homepage />} />
-            <Route path="profile" element={<Profile />} />
-            <Route path="profile/settings" element={<Settings />} />
-            <Route path=":storyId" element={<StoriesPage />} />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/profile/settings" element={<Settings />} />
+            <Route path="/:storyId" element={<StoriesPage />} />
           </Routes>
         </Layout>
       </BrowserRouter>

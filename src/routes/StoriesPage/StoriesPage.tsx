@@ -14,7 +14,7 @@ const StoriesPage = () => {
 
   useEffect(() => {
     const index = users.findIndex((item) => item.id === storyId);
-    dispatch(setCurrentStoriesIndex(index + 1));
+    dispatch(setCurrentStoriesIndex(index));
   }, []);
 
   const renderStory = (users: User[]): JSX.Element => {
