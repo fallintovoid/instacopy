@@ -20,8 +20,7 @@ const StoryPageComponent = ({ avi, username, img }: Props) => {
   const { currentStoriesIndex, users } = useAppSelector((state) => state.users);
   const navigate = useNavigate();
   const ref = useRef<HTMLDivElement>(null);
-  let width = 0;
-  const [stateWidth, setStateWidth] = useState(0);
+  const [width, setWidth] = useState(0);
   const [pause, setPause] = useState(false);
 
   const navigateToStory = () => {
@@ -35,14 +34,15 @@ const StoryPageComponent = ({ avi, username, img }: Props) => {
   };
 
   useEffect(() => {
+    if (width >= ref.current!.offsetWidth) {
+      setWidth(0);
+      navigateToStory();
+    }
+  }, [width]);
+
+  useEffect(() => {
     const timeline = setInterval(() => {
-      width++;
-      setStateWidth(width);
-      if (width >= ref.current!.offsetWidth) {
-        clearInterval(timeline);
-        setStateWidth(0);
-        navigateToStory();
-      }
+      setWidth((prev) => prev + 1);
     }, 10);
 
     return () => {
@@ -54,7 +54,7 @@ const StoryPageComponent = ({ avi, username, img }: Props) => {
     <div className={s.story}>
       <div className={s.user}>
         <div className={s.timeline_gray} ref={ref}>
-          <div className={s.timeline_white} style={{ width: stateWidth }}></div>
+          <div className={s.timeline_white} style={{ width }}></div>
         </div>
         <div className={s.userinfo}>
           <img src={avi} className={s.user_avi} />
