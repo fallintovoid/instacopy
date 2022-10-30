@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "./components/Layout/Layout";
-import Homepage from "./routes/HomePage/Homepage";
+import HomePage from "./routes/HomePage/HomePage";
 import { useEffect } from "react";
 import { useAppDispatch } from "./lib/hooks/hooks";
 import { SkeletonTheme } from "react-loading-skeleton";
@@ -26,7 +26,7 @@ function App() {
         <Routes />
         <Layout>
           <Routes>
-            <Route index element={<Homepage />} />
+            <Route index element={<HomePage />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/profile/settings" element={<Settings />} />
             <Route path="/:storyId" element={<StoriesPage />} />

@@ -8,7 +8,7 @@ import { getPosts, setFetching, setPage } from "../../store/slices/posts/posts";
 import "./Homepage.scss";
 import { StateStatus } from "../../common";
 
-const Homepage = () => {
+const HomePage = () => {
   const dispatch = useAppDispatch();
   const { users, status } = useAppSelector((state) => state.users);
   const { page, fetching } = useAppSelector((state) => state.posts);
@@ -49,4 +49,4 @@ const Homepage = () => {
   );
 };
 
-export default Homepage;
+export default HomePage;
