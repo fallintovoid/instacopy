@@ -26,10 +26,13 @@ const StoryPageComponent = ({ avi, username, img }: Props) => {
   const navigateToStory = () => {
     if (currentStoriesIndex >= users.length - 1) {
       dispatch(setCurrentStoriesIndex(0));
-      navigate(`/${users[currentStoriesIndex].id}`);
+      setWidth(0);
+      navigate(`/${users[0].id}`);
     } else {
-      dispatch(setCurrentStoriesIndex(currentStoriesIndex + 1));
-      navigate(`/${users[currentStoriesIndex].id}`);
+      const newIndex = currentStoriesIndex + 1;
+      setWidth(0);
+      dispatch(setCurrentStoriesIndex(newIndex));
+      navigate(`/${users[newIndex].id}`);
     }
   };
 
@@ -51,18 +54,21 @@ const StoryPageComponent = ({ avi, username, img }: Props) => {
   }, [currentStoriesIndex]);
 
   return (
-    <div className={s.story}>
+    <div className={s.story} onClick={navigateToStory}>
       <div className={s.user}>
         <div className={s.timeline_gray} ref={ref}>
-          <div className={s.timeline_white} style={{ width }}></div>
+          <div
+            className={`${s.timeline_white} ` + !pause ? `${s.active}` : ""}
+            style={{ transitionDuration: "5s" }}
+          ></div>
         </div>
         <div className={s.userinfo}>
           <img src={avi} className={s.user_avi} />
           <p>{username}</p>
-          <BsPauseFill className={s.icon} />
+          <BsPauseFill className={s.icon} onClick={() => setPause((prev) => !prev)} />
         </div>
       </div>
-      <img src={img} className={s.main_photo} onClick={navigateToStory} />
+      <img src={img} className={s.main_photo} />
     </div>
   );
 };

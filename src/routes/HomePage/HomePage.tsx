@@ -5,7 +5,7 @@ import PostList from "../../components/PostList/PostList";
 import Profile from "../../components/Profile/Profile";
 import { getPosts, setFetching, setPage } from "../../store/slices/posts/posts";
 
-import "./Homepage.scss";
+import "../HomePage/HomePage.scss";
 import { StateStatus } from "../../common";
 
 const HomePage = () => {

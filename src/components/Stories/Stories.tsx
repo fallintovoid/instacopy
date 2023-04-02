@@ -1,9 +1,10 @@
 import React from "react";
-import s from "./Stories.module.scss";
 import { useAppSelector } from "../../lib/hooks/hooks";
 import Story from "../Story/Story";
 import { StateStatus } from "../../common";
 import SkeletonStories from "../SkeletonStories/SkeletonStories";
+
+import s from "./Stories.module.scss";
 
 const Stories = () => {
   const { users, status } = useAppSelector((state) => state.users);
